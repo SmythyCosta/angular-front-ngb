@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CategoryService {
@@ -27,11 +27,5 @@ export class CategoryService {
     categoryDelete(id) {
         return this.http.post('/api/category-delete', { id: id });
     }
-
-
-    erro() {
-        return console.log('Erro ao acessar a API');
-    }
-
 
 }

@@ -3,9 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './_services/category.service';
+
+import { SubCategoryService } from './_services/sub-category.service';
+
+
+
 
 @NgModule({
     declarations: [
@@ -15,7 +19,7 @@ import { CategoryService } from './_services/category.service';
     imports: [
         BrowserModule
     ],
-    providers: [CategoryService],
+    providers: [CategoryService, SubCategoryService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
