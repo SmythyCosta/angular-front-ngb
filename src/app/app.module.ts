@@ -4,20 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 //Modulos
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { CategoryModule } from './category/category.module';
+import { SubCategoryModule } from './sub-category/sub-category.module';
 
 
 //Components
 import { AppComponent } from './app.component';
-import { SubCategoryComponent } from './sub-category/sub-category.component';
 
 
 
 @NgModule({
     declarations: [
-        AppComponent, SubCategoryComponent
+        AppComponent
     ],
     imports: [
-        BrowserModule, AppBootstrapModule, CategoryModule
+        BrowserModule, AppBootstrapModule, CategoryModule, SubCategoryModule
     ],
     providers: [],
     bootstrap: [AppComponent]
