@@ -4,9 +4,7 @@
 
 
 
-#########
-#  CLI  #
-#########
+##  CLI  
     Component	ng g component my-new-component
     Directive	ng g directive my-new-directive
     Pipe	    ng g pipe my-new-pipe
@@ -22,9 +20,7 @@
 
 
 
-#######################
-#  Bootstrap Install  #
-#######################
+## Bootstrap Install  
     https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
 
     Foruns: Error compiler
