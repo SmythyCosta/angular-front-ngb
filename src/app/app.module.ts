@@ -1,26 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-//Bootstrap
+//Modulos
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 
+//Components
 import { AppComponent } from './app.component';
-
 import { CategoryComponent } from './category/category.component';
-import { CategoryService } from './_services/category.service';
-
-import { SubCategoryService } from './_services/sub-category.service';
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        CategoryComponent
+        AppComponent, CategoryComponent
     ],
     imports: [
         BrowserModule, AppBootstrapModule
     ],
-    providers: [CategoryService, SubCategoryService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

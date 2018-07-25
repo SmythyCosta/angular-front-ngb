@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { Http } from '@angular/http';
-
-
-import { CategoryService }   from '../_services/category.service';
 import { CategoryInterface }   from '../interfaces/category.interface';
 
 @Component({
@@ -15,22 +11,8 @@ export class CategoryComponent implements OnInit {
 
 	categoryList: CategoryInterface[]; 
 
-    constructor(
-        private http:Http,
-        private dataService:CategoryService
-    ) { }
+    constructor() { }
 
     ngOnInit() {}
-
-
-    allCategory(){
-        this.dataService.getAllCategory()
-              .subscribe(data => { 
-                            this.categoryList = data.cat; 
-                        });
-    }
-
-    
-
 
 }
