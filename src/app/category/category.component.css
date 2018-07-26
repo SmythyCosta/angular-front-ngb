@@ -1,6 +1,7 @@
-div{
+.content{
     min-width: 100%;
-    min-height: 200px;
+    min-height: 100vh;
     background-color: aqua;
+    overflow-x: hidden;
 }
 
