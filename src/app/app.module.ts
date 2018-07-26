@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+
 
 //Modulos
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
@@ -17,7 +19,7 @@ import { AppComponent } from './app.component';
         AppComponent
     ],
     imports: [
-        BrowserModule, AppBootstrapModule, CategoryModule, SubCategoryModule
+        BrowserModule, AppBootstrapModule, HttpModule, CategoryModule, SubCategoryModule
     ],
     providers: [],
     bootstrap: [AppComponent]
