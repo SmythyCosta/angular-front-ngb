@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -19,21 +20,23 @@ export class AppComponent {
 
     constructor(http:Http){
 
-        let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
+        let stream = http.get('http://127.0.0.1:8000/api/v1/get-all-category-by-grid');
 
+        
         stream.map(res => res.json())
         .subscribe(categoryList => {
             this.categoryList = categoryList;
             console.log(this.categoryList);
         }, error => console.log(error));
+        
 
-        /**
-         * 
+        /** 
         stream.subscribe(res => {
             this.categoryList = res.json();
             console.log(this.categoryList);
         });
-         */
+        */
+        
 
 
 
