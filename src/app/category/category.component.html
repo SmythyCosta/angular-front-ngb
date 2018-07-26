@@ -24,49 +24,62 @@
         </div>
 
         <div class="row">
+
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary">Add</button>
+                <!-- 
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-success">Success</button>
+                <button type="button" class="btn btn-danger">Danger</button>
+                <button type="button" class="btn btn-warning">Warning</button>
+                <button type="button" class="btn btn-info">Info</button>
+                <button type="button" class="btn btn-light">Light</button>
+                <button type="button" class="btn btn-dark">Dark</button>
+                -->
+            </div>
+
             <div class="col-md-12">
 
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Description</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Roupas </td>
+                                <td>desc</td>
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                    <span class="badge badge-danger">Inactive</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Eletrônicos </td>
+                                <td>desc</td>
+                                <td>
+                                    <span class="badge badge-success">Active</span>
+                                    <span class="badge badge-danger">Inactive</span>
+                                </td>
+                            </tr>
+                        </tbody>
 
-                            <tbody>
-                                <tr>
-                                    <td>Joao </td>
-                                    <td>desc</td>
-                                    <td>
-                                        <span class="badge badge-success">Active</span>
-                                        <span class="badge badge-danger">Inactive</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Marcelo </td>
-                                    <td>desc</td>
-                                    <td>
-                                        <span class="badge badge-success">Active</span>
-                                        <span class="badge badge-danger">Inactive</span>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        <!-- 
+                        <tbody>
+                            <tr *ngFor="let item of categoryList">
+                                <td>{{item.name}}</td>
+                                <td>{{item.description}}</td>
+                                <td><span *ngIf="item.status==1" class="badge badge-success">Active</span> <span *ngIf="item.status==0" class="badge badge-danger">Inactive</span></td>
+                            </tr>
+                        </tbody>
+                        -->
 
-                            <!-- 
-                                        <tbody>
-                                            <tr *ngFor="let item of categoryList">
-                                                <td>{{item.name}}</td>
-                                                <td>{{item.description}}</td>
-                                                <td><span *ngIf="item.status==1" class="badge badge-success">Active</span> <span *ngIf="item.status==0" class="badge badge-danger">Inactive</span></td>
-                                            </tr>
-                                        </tbody>
-                                        -->
-
-                        </table>
-                    </div>
+                    </table>
+                </div>
 
             </div>
         </div>
