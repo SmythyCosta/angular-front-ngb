@@ -13,8 +13,6 @@ import 'rxjs/Rx';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    
-    title = 'FrontEnd - Angular Ecommerce';
 
     categoryList:Object[] = [];
 
