@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 //Modulos
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { AppRoutingModule } from './app.routes';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { CategoryModule } from './category/category.module';
 import { SubCategoryModule } from './sub-category/sub-category.module';
 
@@ -17,7 +18,10 @@ import { AppComponent } from './app.component';
         AppComponent
     ],
     imports: [
-        BrowserModule, AppBootstrapModule, HttpModule, CategoryModule, SubCategoryModule, AppRoutingModule
+        BrowserModule, AppRoutingModule, AppBootstrapModule, HttpModule,
+        DashboardModule,
+        CategoryModule, 
+        SubCategoryModule
     ],
     providers: [],
     bootstrap: [AppComponent]
