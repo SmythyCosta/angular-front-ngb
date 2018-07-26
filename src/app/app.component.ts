@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
 
 @Component({
     selector: 'app-root',
@@ -16,10 +21,35 @@ export class AppComponent {
 
         let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
 
+        stream.map(res => res.json())
+        .subscribe(categoryList => {
+            this.categoryList = categoryList;
+            console.log(this.categoryList);
+        }, error => console.log(error));
+
+        /**
+         * 
         stream.subscribe(res => {
             this.categoryList = res.json();
             console.log(this.categoryList);
         });
+         */
+
+
+
+        /** 
+        stream.map((response: Response) => console.log(response.json()));
+        */
+
+        /** 
+        allCategory(){
+            this.dataService.getAllCategory()
+                  .subscribe(data => { 
+                                this.categoryList = data.cat; 
+                            });
+          }
+        */
+        
 
     }
 
