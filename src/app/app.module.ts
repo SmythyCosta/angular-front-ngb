@@ -13,7 +13,6 @@ import { SubCategoryModule } from './sub-category/sub-category.module';
 import { AppComponent } from './app.component';
 
 
-
 @NgModule({
     declarations: [
         AppComponent
