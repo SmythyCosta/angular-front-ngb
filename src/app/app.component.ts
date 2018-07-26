@@ -14,6 +14,7 @@ import 'rxjs/Rx';
 })
 export class AppComponent {
 
+    title = 'Dashboard - FrontEnd Angular Ecommerce';
     categoryList:Object[] = [];
 
     constructor(http:Http){

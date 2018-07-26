@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
-    title = 'Dashboard - FrontEnd Angular Ecommerce';
-
     constructor() { }
 
 }
