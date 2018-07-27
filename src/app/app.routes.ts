@@ -7,11 +7,14 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 
 
 const routes: Routes = [
+    
+    /** 
     {
         path: 'category',
         loadChildren: 'app/category/category.module#CategoryModule'
         
     },
+    */
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard',        component: DashboardComponent },
     { path: 'sub-category',     component: SubCategoryComponent },

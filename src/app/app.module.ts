@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
 
 //Modulos
@@ -18,7 +20,9 @@ import { AppComponent } from './app.component';
         AppComponent
     ],
     imports: [
-        BrowserModule, AppRoutingModule, AppBootstrapModule, HttpModule,
+        BrowserModule, 
+        FormsModule,
+        AppRoutingModule, AppBootstrapModule, HttpModule,
         DashboardModule,
         CategoryModule, 
         SubCategoryModule
