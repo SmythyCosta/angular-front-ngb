@@ -12,7 +12,7 @@ import { CategoryRoutingModule } from './category-routing.module';
     FormsModule,
     CategoryRoutingModule
   ],
-  //declarations: [CategoryListComponent, CategoryFormComponent],
+  declarations: [CategoryListComponent, CategoryFormComponent],
   exports: [CategoryListComponent, CategoryFormComponent]
 })
 export class CategoryModule { }

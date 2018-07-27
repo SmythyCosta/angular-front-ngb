@@ -19,7 +19,7 @@ export class AppComponent {
 
     constructor(http:Http){
 
-        let stream = http.get('http://127.0.0.1:8000/api/v1/get-all-category-by-grid');
+        let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
 
         
         stream.map(res => res.json())
