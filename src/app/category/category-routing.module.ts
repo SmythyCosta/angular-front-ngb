@@ -6,6 +6,10 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 
 
 const categoryRoutes: Routes = [
+
+    { path: 'category',  component: CategoryListComponent },
+    { path: 'category/:id', component: CategoryFormComponent }
+    /** 
     {
         path: '', component: CategoryListComponent,
         children: [
@@ -18,6 +22,7 @@ const categoryRoutes: Routes = [
             }
         ]
     }
+    */
 ];
 
 @NgModule({
