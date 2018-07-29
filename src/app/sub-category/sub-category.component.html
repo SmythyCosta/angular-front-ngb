@@ -3,7 +3,7 @@
     
             <div class="row">
                 <div class="col-md-12">
-                    <h2 style="text-align: center">Sub Category: </h2>
+                    <h2 style="text-align: center"> Sub Category </h2>
                 </div>
             </div>
     
@@ -12,10 +12,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="#">Ecommerce</a>
+                                Ecommerce
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">SubCategory</a>
+                                SubCategory
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">List</li>
                         </ol>
@@ -24,63 +24,43 @@
             </div>
     
             <div class="row">
-    
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary">Add</button>
-                    <!-- 
-                    <button type="button" class="btn btn-secondary">Secondary</button>
-                    <button type="button" class="btn btn-success">Success</button>
-                    <button type="button" class="btn btn-danger">Danger</button>
-                    <button type="button" class="btn btn-warning">Warning</button>
-                    <button type="button" class="btn btn-info">Info</button>
-                    <button type="button" class="btn btn-light">Light</button>
-                    <button type="button" class="btn btn-dark">Dark</button>
-                    -->
+                    <button type="button" class="btn btn-danger" routerLink="/sub-category">List</button>
+                    <button type="button" class="btn btn-primary" routerLink="/sub-category/form">Add</button>
                 </div>
-    
+            </div>
+
+            <div class="row">
                 <div class="col-md-12">
-    
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>Category</th>
+                                    <th>Sub Category</th>
                                     <th>Description</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Roupas </td>
-                                    <td>desc</td>
+                                <tr *ngFor="let obj of subCategoryList">
+									<td>{{obj.name}}</td>
+									<td>{{obj.categoryName}}</td>
+									<td>{{obj.description}}</td>
                                     <td>
-                                        <span class="badge badge-success">Active</span>
-                                        <span class="badge badge-danger">Inactive</span>
+                                        <span *ngIf="obj.status==1" class="badge badge-success">Active</span>
+                                        <span *ngIf="obj.status==0" class="badge badge-danger">Inactive</span>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Eletrônicos </td>
-                                    <td>desc</td>
                                     <td>
-                                        <span class="badge badge-success">Active</span>
-                                        <span class="badge badge-danger">Inactive</span>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button> 
+    
+                                        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/sub-category/form', obj.id]"> Edit </button>
                                     </td>
                                 </tr>
                             </tbody>
-    
-                            <!-- 
-                            <tbody>
-                                <tr *ngFor="let item of categoryList">
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.description}}</td>
-                                    <td><span *ngIf="item.status==1" class="badge badge-success">Active</span> <span *ngIf="item.status==0" class="badge badge-danger">Inactive</span></td>
-                                </tr>
-                            </tbody>
-                            -->
-    
                         </table>
                     </div>
-    
                 </div>
             </div>
     
