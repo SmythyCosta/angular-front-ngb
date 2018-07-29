@@ -11,9 +11,7 @@ import { CategoryService } from '../../_services/category.service';
     styleUrls: ['./category-form.component.css']
 })
 export class CategoryFormComponent implements OnInit {
-
-    private isNew: boolean = true;
-    
+        
     cat = {};
     
     getCat = {
@@ -35,7 +33,6 @@ export class CategoryFormComponent implements OnInit {
         this.routeParams.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if (id) {
-                this.isNew = false;
                 this.edit(id);
             }
         });
