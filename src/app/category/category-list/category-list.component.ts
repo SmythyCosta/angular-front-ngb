@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
+import { CategoryService } from '../../_services/category.service';
 
 @Component({
     selector: 'app-category-list',
@@ -12,7 +13,7 @@ export class CategoryListComponent implements OnInit {
     constructor(
         public router: Router,
         private http:Http,
-        //private dataService:CategoryService,
+        private dataService:CategoryService
     ) { }
 
     ngOnInit() { }
