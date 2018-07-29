@@ -11,22 +11,39 @@ import { CategoryInterface } from '../../interfaces/category.interface';
 })
 export class CategoryListComponent implements OnInit {
 
-    public categoryList:CategoryInterface[];
+    public categoryList: CategoryInterface[];
 
     constructor(
         public router: Router,
-        private http:Http,
-        private dataService:CategoryService
+        private http: Http,
+        private dataService: CategoryService
     ) { }
 
-    ngOnInit() { 
+
+    ngOnInit() {
         this.allCategory();
     }
 
-    allCategory(){
+
+    allCategory() {
         this.dataService.getAllCategory()
             .subscribe(data => {
                 this.categoryList = data.cat;
+            });
+    }
+
+
+    delete(id) {
+        this.dataService.categoryDelete(id)
+            .subscribe(data => {
+                if (data.status == 200) {
+                    alert('Category Delete successful');
+                    this.allCategory();
+                } else {
+                    alert('Category Assigned Product');
+                }
+            }, error => {
+                alert(error);
             });
     }
 
