@@ -22,10 +22,10 @@ import { AppComponent } from './app.component';
     imports: [
         AppBootstrapModule,
         BrowserModule, 
-        CategoryModule,
-        DashboardModule,
         FormsModule,
         HttpModule,
+        CategoryModule,
+        DashboardModule,
         SubCategoryModule,
         AppRoutes
     ],

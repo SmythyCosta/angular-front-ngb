@@ -13,7 +13,16 @@ import { CategoryService } from '../../_services/category.service';
 export class CategoryFormComponent implements OnInit {
 
     private isNew: boolean = true;
+    
     cat = {};
+    
+    getCat = {
+        id:'',
+        name: '',
+        description: '',
+        status: ''
+    };
+    
 
     constructor(
         public  router: Router,
@@ -23,24 +32,16 @@ export class CategoryFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
-        /** 
         this.routeParams.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if (id) {
                 this.isNew = false;
-
-                this.contatoService.find(id)
-                    .then((contato: Contato) => {
-                        this.contato = contato;
-                    });
+                this.edit(id);
             }
         });
-        */
     }
 
     save(val){
-        
         if(val.id==undefined){
 		    this.dataService.save(this.cat)
                 .subscribe( data => {
@@ -58,7 +59,19 @@ export class CategoryFormComponent implements OnInit {
                     alert('Error in Category Update');
                 });
         }
-
-	}
+    }
+    
+    edit(id){
+        this.dataService.getCategory(id)
+            .subscribe(data => { this.getCat = data.cat; 
+                this.cat = {
+                    id:this.getCat.id,
+                    category:this.getCat.name,
+                    description:this.getCat.description,
+                    status:this.getCat.status
+                };
+            });
+    }
+    
 
 }

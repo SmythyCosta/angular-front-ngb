@@ -8,7 +8,7 @@ const appRoutes: Routes = [
     { path: 'dashboard',        redirectTo: '/dashboard' },
     { path: 'category',         redirectTo: '/category' },
     { path: 'sub-category',     redirectTo: '/sub-category' },
-    { path: '**',               redirectTo: '/dashboard' }
+    //{ path: '**',               redirectTo: '/dashboard' }
 
 ];
 
