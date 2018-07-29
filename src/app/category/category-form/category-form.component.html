@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form method="post" enctype="multipart/form-data">
+                <form id="categoryForm" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label for="category">Category</label>
@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control" [(ngModel)]="cat.status">
+                        <select name="status" id="status" class="form-control" required [(ngModel)]="cat.status">
                             <option value="1">Active</option>
                             <option value="0">Deactive</option>
                         </select>

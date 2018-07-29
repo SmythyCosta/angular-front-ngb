@@ -13,6 +13,7 @@ import { CategoryService } from '../../_services/category.service';
 export class CategoryFormComponent implements OnInit {
 
     private isNew: boolean = true;
+    cat = {};
 
     constructor(
         public router: Router,
@@ -23,6 +24,7 @@ export class CategoryFormComponent implements OnInit {
 
     ngOnInit() {
 
+        /** 
         this.routeParams.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if (id) {
@@ -34,31 +36,33 @@ export class CategoryFormComponent implements OnInit {
                     });
             }
         });
+        */
     }
 
     save(val){
-		// this.customer.id;
 		if(val.id==undefined){
-		  this.dataService.save(this.cat)
-          .subscribe(data =>{
-            this.modalReference.close();
-            this.dtTrigger = new Subject(); //  DataTable
-            this.alertService.success('Category Create successful', true);
-            this.allCategory();
-          },error =>{
-            this.alertService.error(error);
-          });
-		}else{
-		  this.dataService.categoryUpdate(this.cat)
-          .subscribe(data =>{
-         this.modalReference.close();
-            this.dtTrigger = new Subject(); //  DataTable
-            this.alertService.success('Category Update successful', true);
-            this.allCategory();
-          },error =>{
-            this.alertService.error(error);
-          });
-		}
+		    this.dataService.save(this.cat)
+                .subscribe( data => {
+                    alert('Category Create successful');
+                    this.cat = {};
+                },error =>{
+                    alert('Error in Category');
+                });
+        }
+        /**
+        else{
+		    this.dataService.categoryUpdate(this.cat)
+                .subscribe(data => {
+                    this.modalReference.close();
+                    this.dtTrigger = new Subject(); //  DataTable
+                    this.alertService.success('Category Update successful', true);
+                    this.allCategory();
+                },error => {
+                    this.alertService.error(error);
+                });
+        }
+         */
+        
 	}
 
 }
