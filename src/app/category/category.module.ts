@@ -5,6 +5,7 @@ import { FormsModule }  from '@angular/forms';
 import { CategoryListComponent }    from './category-list/category-list.component';
 import { CategoryFormComponent }    from './category-form/category-form.component';
 import { CategoryRoutes }           from './category-routes';
+import { CategoryService } from '../_services/category.service';
 
 @NgModule({
     imports: [
@@ -13,6 +14,7 @@ import { CategoryRoutes }           from './category-routes';
         CategoryRoutes
     ],
     declarations: [CategoryListComponent, CategoryFormComponent],
-    exports: [CategoryListComponent, CategoryFormComponent]
+    exports: [CategoryListComponent, CategoryFormComponent],
+    providers:[CategoryService]
 })
 export class CategoryModule { }
