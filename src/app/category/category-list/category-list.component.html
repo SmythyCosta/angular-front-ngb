@@ -53,6 +53,7 @@
                                 <th>Category</th>
                                 <th>Description</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,11 @@
                                 <td>
                                     <span *ngIf="obj.status==1" class="badge badge-success">Active</span>
                                     <span *ngIf="obj.status==0" class="badge badge-danger">Inactive</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="delete(this.categoryList[i].id)"> Delete </button> 
+
+                                    <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/cateory/form', obj.id]"> Edit </button>
                                 </td>
                             </tr>
                         </tbody>

@@ -16,7 +16,7 @@ export class CategoryFormComponent implements OnInit {
     cat = {};
 
     constructor(
-        public router: Router,
+        public  router: Router,
         private routeParams: ActivatedRoute,
         private http:Http,
         private dataService:CategoryService
@@ -40,7 +40,8 @@ export class CategoryFormComponent implements OnInit {
     }
 
     save(val){
-		if(val.id==undefined){
+        
+        if(val.id==undefined){
 		    this.dataService.save(this.cat)
                 .subscribe( data => {
                     alert('Category Create successful');
@@ -48,21 +49,16 @@ export class CategoryFormComponent implements OnInit {
                 },error =>{
                     alert('Error in Category');
                 });
-        }
-        /**
-        else{
+        }else{
 		    this.dataService.categoryUpdate(this.cat)
                 .subscribe(data => {
-                    this.modalReference.close();
-                    this.dtTrigger = new Subject(); //  DataTable
-                    this.alertService.success('Category Update successful', true);
-                    this.allCategory();
+                    alert('Category Update successful');
+                    this.router.navigate(['/category']);
                 },error => {
-                    this.alertService.error(error);
+                    alert('Error in Category Update');
                 });
         }
-         */
-        
+
 	}
 
 }
