@@ -20,14 +20,14 @@ import { AppComponent } from './app.component';
         AppComponent
     ],
     imports: [
-        AppRoutes, 
         AppBootstrapModule,
         BrowserModule, 
         CategoryModule,
         DashboardModule,
         FormsModule,
         HttpModule,
-        SubCategoryModule
+        SubCategoryModule,
+        AppRoutes
     ],
     providers: [],
     bootstrap: [AppComponent]
