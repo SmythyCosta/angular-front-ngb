@@ -12,11 +12,13 @@ import { SubCategoryModule }    from './sub-category/sub-category.module';
 
 //Components
 import { AppComponent } from './app.component';
+import { ProductComponent } from './product/product/product.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ProductComponent
     ],
     imports: [
         AppBootstrapModule,
