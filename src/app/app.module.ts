@@ -4,7 +4,8 @@ import { FormsModule }      from '@angular/forms';
 import { HttpModule }       from '@angular/http';
 
 //Modulos
-import { AppBootstrapModule }   from './_app-bootstrap/app-bootstrap.module';
+//import { AppBootstrapModule }   from './_app-bootstrap/app-bootstrap.module';
+import { NgbModule }            from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutes }            from './app.routes';
 import { DashboardModule }      from './dashboard/dashboard.module';
 import { CategoryModule }       from './category/category.module';
@@ -21,13 +22,14 @@ import { ProductComponent } from './product/product/product.component';
         ProductComponent
     ],
     imports: [
-        AppBootstrapModule,
+        //AppBootstrapModule,
         BrowserModule, 
         FormsModule,
         HttpModule,
         CategoryModule,
         DashboardModule,
         SubCategoryModule,
+        NgbModule.forRoot(),
         AppRoutes
     ],
     providers: [],
