@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductInterface } from '../../_interfaces/product.interface';
+
 
 @Component({
   selector: 'app-product',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+
+  public productList: ProductInterface[];
 
   constructor() { }
 
