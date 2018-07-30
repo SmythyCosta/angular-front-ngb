@@ -10,6 +10,8 @@ import { AppRoutes }            from './app.routes';
 import { DashboardModule }      from './dashboard/dashboard.module';
 import { CategoryModule }       from './category/category.module';
 import { SubCategoryModule }    from './sub-category/sub-category.module';
+import { ProductModule } from './product/product/product.module';
+
 
 //Components
 import { AppComponent } from './app.component';
@@ -26,10 +28,11 @@ import { ProductComponent } from './product/product/product.component';
         BrowserModule, 
         FormsModule,
         HttpModule,
+        NgbModule.forRoot(),
         CategoryModule,
         DashboardModule,
         SubCategoryModule,
-        NgbModule.forRoot(),
+        ProductModule,
         AppRoutes
     ],
     providers: [],
