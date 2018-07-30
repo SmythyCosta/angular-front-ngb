@@ -7,14 +7,14 @@ import { ProductComponent } from './product.component';
 import { ProductService } from '../../_services/index';
 import { ProductRoutes } from './product.routes';
 
-import { DataTablesModule } from 'angular-datatables';
+//import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
     imports: [
         CommonModule,
         NgbModule,
         ReactiveFormsModule,
-        DataTablesModule,
+        //DataTablesModule,
         ProductRoutes
     ],
     declarations: [
