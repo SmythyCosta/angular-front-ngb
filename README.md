@@ -20,7 +20,7 @@
 
 
 
-## Bootstrap Install  
+## ngx-bootstrap - Modulo com componentes Bootstrap  
     https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
 
     Foruns: Error compiler
@@ -30,5 +30,12 @@
 
 
 
-# Snippet
+## NgbModule - Modulos com componentes bootStrap
+    https://github.com/ng-bootstrap/ng-bootstrap
+    https://ng-bootstrap.github.io/#/home
+
+
+
+
+## Snippet
     https://github.com/johnpapa/vscode-angular-snippets
