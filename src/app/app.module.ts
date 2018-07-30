@@ -10,7 +10,7 @@ import { AppRoutes }            from './app.routes';
 import { DashboardModule }      from './dashboard/dashboard.module';
 import { CategoryModule }       from './category/category.module';
 import { SubCategoryModule }    from './sub-category/sub-category.module';
-import { ProductModule }        from './product/product/product.module';
+import { ProductModule }        from './product/product.module';
 
 
 //Components
