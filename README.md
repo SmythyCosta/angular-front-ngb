@@ -26,3 +26,9 @@
     Foruns: Error compiler
     https://stackoverflow.com/questions/40025762/angular2-cli-gives-multi-styles-error
     https://stackoverflow.com/questions/43557321/angular-4-how-to-include-bootstrap
+
+
+
+
+# Snippet
+    https://github.com/johnpapa/vscode-angular-snippets
