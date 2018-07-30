@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Http } from '@angular/http';
-import { SubCategoryService } from '../_services/sub-category.service';
-import { subCategoryInterface } from '../interfaces/sub-category.interface';
+import { Component, OnInit }    from '@angular/core';
+import { Router }               from '@angular/router';
+import { Http }                 from '@angular/http';
+import { SubCategoryService }   from '../_services/sub-category.service';
+import { subCategoryInterface } from '../_interfaces/sub-category.interface';
 
 @Component({
     selector: 'app-sub-category',

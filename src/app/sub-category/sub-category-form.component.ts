@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit }    from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Http } from '@angular/http';
-import { SubCategoryService } from '../_services/sub-category.service';
+import { switchMap }            from 'rxjs/operators';
+import { Http }                 from '@angular/http';
+import { SubCategoryService }   from '../_services/sub-category.service';
 
 @Component({
     selector: 'app-sub-category-form',

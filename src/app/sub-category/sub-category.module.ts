@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
 
-import { SubCategoryComponent } from './sub-category.component';
-import { SubCategoryFormComponent } from './sub-category-form.component';
-import { SubCategoryService } from '../_services/sub-category.service';
-import { SubCategoryRoutes } from './sub-category.routes';
+import { SubCategoryComponent }         from './sub-category.component';
+import { SubCategoryFormComponent }     from './sub-category-form.component';
+import { SubCategoryService }           from '../_services/sub-category.service';
+import { SubCategoryRoutes }            from './sub-category.routes';
 
 @NgModule({
     imports: [

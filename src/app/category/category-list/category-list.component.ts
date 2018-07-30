@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { CategoryService } from '../../_services/category.service';
-import { CategoryInterface } from '../../interfaces/category.interface';
+import { CategoryInterface } from '../../_interfaces/category.interface';
 
 @Component({
     selector: 'app-category-list',
