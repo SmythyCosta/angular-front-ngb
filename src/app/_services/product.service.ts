@@ -32,7 +32,7 @@ export class ProductService {
     }
 
     getProductInfo(id) {
-        return this.http.post('/api/get-product-details', { id: id }).map((response: Response) => response.json());
+        return this.http.post(this.pathApi+'/api/get-product-details', { id: id }).map((response: Response) => response.json());
     }
 
 }
