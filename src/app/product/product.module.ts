@@ -1,22 +1,23 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule }                 from '@angular/common';
-import { ReactiveFormsModule }          from '@angular/forms';
+import { NgModule }     from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule }  from '@angular/forms';
 
-import { ProductComponent }     from './product-list/product.component';
+import { ProductListComponent }     from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductService }       from '../_services/product.service';
 import { ProductRoutes }        from './product.routes';
+import { CategoryService }      from '../_services/category.service';
 
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
+        FormsModule,
         ProductRoutes
     ],
     declarations: [
-        ProductComponent, ProductFormComponent
+        ProductListComponent, ProductFormComponent
     ],
-    exports: [ ProductComponent, ProductFormComponent ],
-    providers: [ProductService]
+    exports: [ ProductListComponent, ProductFormComponent ],
+    providers: [ProductService, CategoryService]
 })
 export class ProductModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
+
 import { CategoryService } from '../../_services/category.service';
 import { CategoryInterface } from '../../_interfaces/category.interface';
 

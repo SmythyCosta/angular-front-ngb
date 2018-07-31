@@ -50,6 +50,7 @@
                             </tr>
                         </thead>
                         
+                        <!-- 
                         <tbody>
                             <tr *ngFor="let obj of productList">
                                 <td>id</td>
@@ -57,8 +58,10 @@
                                 <td>{{item.name}}</td>
                                 <td>{{item.categoryName}}</td>
                                 <td>{{item.selling_price}} </td>
+                                
 
                                 <td>
+                                    
                                     <button type="button" class="btn btn-danger btn-sm" (click)="delete(item.id)"> Delete </button>
                                      
                                     <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/product/form', item.id]"> Edit </button>
@@ -66,6 +69,7 @@
                                 </td>
                             </tr>
                         </tbody>
+                        -->
                         
                     </table>
                 </div>
