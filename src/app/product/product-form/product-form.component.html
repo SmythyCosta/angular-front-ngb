@@ -35,23 +35,85 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
 
-                <!-- 
-                <form id="categoryForm" method="post" enctype="multipart/form-data">
+
+                <form method="post" id="categoryForm" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="category">Product Name</label>
-                        <input type="text" name="category" id="category" class="form-control" aria-describedby="categoryHelp" placeholder="Enter category name"
-                            required [(ngModel)]="cat.category">
-                        <small id="categoryHelp" class="form-text text-muted">We'll never share your category with anyone else.</small>
+                        <label for="serial_number">Serial Code</label>
+                        <input type="text" name="serial_number" id="serial_number" class="form-control" readonly [(ngModel)]="product.serial_number">
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required [(ngModel)]="product.name">
+                    </div>
 
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" class="form-control" required [(ngModel)]="product.category" (ngModelChange)="selectCat($event)">
+                            <option value="" selected disabled>Please Select</option>
+                            <option *ngFor="let item of cat" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" *ngIf="product.category !=''">
+                        <div class="form-group">
+                            <label for="subCategory">Sub Category</label>
+                            <select name="subCategory" id="subCategory" class="form-control" required [(ngModel)]="product.subCategory">
+                                <option value="" selected>Please Select</option>
+                                <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purchase_price">Purchase price</label>
+                        <input type="text" name="purchase_price" id="purchase_price" class="form-control" required [(ngModel)]="product.purchase_price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selling_price">Selling price</label>
+                        <input type="text" name="selling_price" id="selling_price" class="form-control" required [(ngModel)]="product.selling_price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <textarea name="note" id="note" class="form-control" rows="3" required [(ngModel)]="product.note"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select name="status" id="status" class="form-control" required [(ngModel)]="product.status">
+                            <option value="1">Active</option>
+                            <option value="0">Deactive</option>
+                        </select>
+                    </div>
+
+                    <!-- 
+                    <div class="form-group row">
+	                    	<label class="col-md-5 form-control-label">image</label>
+		                    <div class="col-md-7">
+		                      <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image" />
+		                      <div class="input-group">
+		                          <span class="input-group-btn">
+		                                  <label class="btn btn-primary">
+		                                    <samp>Browse</samp>...
+		                                      <input type="file" accept="{{fileType}}"  style="display: none;" (change)="fileChange($event)" [attr.multiple] ="allowMultiple" >
+		                                  </label>
+		                              </span>
+		                          <input type="text" class="form-control" [value]="DisplayedText" disabled="" [class.ng-invalid-right]="required && !DisplayedText"  [class.ng-valid-right]="required && DisplayedText" style="height: 35px;">
+		                      </div>
+		                    </div>
+                        </div>
+                        -->
+
+                    <!-- 
                     <button type="submit" class="btn btn-primary" (click)="save(this.cat)"> Submit </button>
+                    -->
 
                 </form>
-                -->
-                
+
+
             </div>
             <div class="col-md-2"></div>
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../_services/product.service';
 
 
 @Component({
@@ -8,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductFormComponent implements OnInit {
 
+    subCat: any[] = [];
+
     constructor(
-        
+        private dataService: ProductService
     ) { }
 
     ngOnInit() {
-        
+
+    }
+
+    selectCat(id) {
+        this.dataService.getSubCategory(id)
+            .subscribe(data => {
+                this.subCat = data.subCat;
+            });
     }
 
 }
