@@ -36,7 +36,7 @@
             <div class="col-md-8">
 
 
-                <form method="post" id="categoryForm" enctype="multipart/form-data">
+                <form method="post" id="categoryForm" enctype="multipart/form-data" [formGroup]="productAddForm">
 
                     <div class="form-group">
                         <label for="serial_number">Serial Code</label>
@@ -56,7 +56,8 @@
                         </select>
                     </div>
 
-                    <div class="form-group" *ngIf="product.category !=''">
+                    <!-- 
+                    <div class="form-group" *ngIf="product.category !=''">-->
                         <div class="form-group">
                             <label for="subCategory">Sub Category</label>
                             <select name="subCategory" id="subCategory" class="form-control" required [(ngModel)]="product.subCategory">
@@ -64,7 +65,8 @@
                                 <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
                             </select>
                         </div>
-                    </div>
+                        <!-- 
+                    </div>-->
 
                     <div class="form-group">
                         <label for="purchase_price">Purchase price</label>
@@ -91,7 +93,7 @@
 
                     <!-- 
                     <div class="form-group row">
-	                    	<label class="col-md-5 form-control-label">image</label>
+	                    	<label for="">image</label>
 		                    <div class="col-md-7">
 		                      <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image" />
 		                      <div class="input-group">
@@ -107,9 +109,9 @@
                         </div>
                         -->
 
-                    <!-- 
-                    <button type="submit" class="btn btn-primary" (click)="save(this.cat)"> Submit </button>
-                    -->
+                    
+                    <button type="submit" class="btn btn-primary" (click)="save(this.product)"> Submit </button>
+                    
 
                 </form>
 
