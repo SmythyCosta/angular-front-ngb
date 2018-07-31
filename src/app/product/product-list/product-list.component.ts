@@ -14,8 +14,9 @@ import { CategoryService }  from '../../_services/category.service';
 export class ProductListComponent implements OnInit {
 
     public productList: ProductInterface[];
-    //categoryList = {};
-    categoryList:Object[] = [];
+    categoryList = {};
+
+    
 
     constructor(
         public router: Router,
@@ -24,22 +25,31 @@ export class ProductListComponent implements OnInit {
         private dataSericeCategory: CategoryService
     ) { }
 
+    
 
     ngOnInit() {
-        //this.allCategory();
-        //console.log(this.categoryList);
 
 
+        // ============================== Begin Testing ============================
         /*
         * Test Call API
         */
-        let stream = this.http.get('http://127.0.0.1:8000//api/all-product');
+       /**
+        let stream = this.http.get('http://127.0.0.1:8000/api/all-product');
         stream.map(res => res.json())
-        .subscribe(categoryList => {
-            this.categoryList = categoryList;
-            console.log(this.categoryList);
+        .subscribe(data => {
+            this.productList = data.product;
+
+            console.log('API Call Values => ');
+            console.log(this.productList);
+        
         }, error => console.log(error));
-        // ================ End Testing ==============
+        */
+        //
+        // ============================== End Testing ============================
+
+        this.allProduct();
+
     }
 
 
@@ -50,11 +60,13 @@ export class ProductListComponent implements OnInit {
             });
     }
 
+    /**
     allCategory(){
         this.dataSericeCategory.getAllCategory()
             .subscribe( data => { 
                 this.categoryList = data.cat;
         });
     }
+    */
 
 }
