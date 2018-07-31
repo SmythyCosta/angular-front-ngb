@@ -16,7 +16,7 @@ import { ProductService } from '../../_services';
 export class ProductComponent implements OnInit {
 
     public productList: ProductInterface[];
-
+/**
     @Input() allowMultiple: boolean;
     @Input() fileType: string;
     @Input() required: boolean;
@@ -33,6 +33,7 @@ export class ProductComponent implements OnInit {
     dtTrigger = new Subject(); //  DataTable
     productAddForm: FormGroup;
     randomnumber = Math.floor(Math.random() * 100000000);
+     */
 
     getProduct = {
         id: '',
@@ -54,7 +55,7 @@ export class ProductComponent implements OnInit {
     constructor(
         public router: Router,
         private http: Http,
-        private dataService: ProductService,
+        private dataService: ProductService
     ) { }
 
     product = {};
@@ -67,7 +68,8 @@ export class ProductComponent implements OnInit {
     lodingImage = false;
 
     ngOnInit() {
-        this.allProduct();
+        console.log('Hellou baby');
+        console.log( this.productList);
     }
 
 
@@ -79,8 +81,8 @@ export class ProductComponent implements OnInit {
             .subscribe(
                 data => { this.productList = data.product; 
                 //this.dtTrigger.next(); // Data Table
-                this.pdf = true;
-                this.exl = true;
+                //this.pdf = true;
+                //this.exl = true;
             });
       }
 
