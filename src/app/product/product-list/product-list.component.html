@@ -45,22 +45,18 @@
                                 <th>Code</th>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th style="width: 10%;">Purchase Price</th>
                                 <th style="width: 10%;">Selling Price</th>
-                                <th style="width: 5%;">Quantity</th>
                                 <th style="width: 9%;" class="action">Action</th>
                             </tr>
                         </thead>
-                        <!-- 
+                        
                         <tbody>
                             <tr *ngFor="let obj of productList">
                                 <td>id</td>
                                 <td>{{item.serial_number}}</td>
                                 <td>{{item.name}}</td>
                                 <td>{{item.categoryName}}</td>
-                                <td>{{item.purchase_price}} {{setting.currency}}</td>
-                                <td>{{item.selling_price}} {{setting.currency}}</td>
-                                <td>{{item.stock_quantity - item.damagedQuantity}}</td>
+                                <td>{{item.selling_price}} </td>
 
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm" (click)="delete(item.id)"> Delete </button>
@@ -70,7 +66,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                        -->
+                        
                     </table>
                 </div>
             </div>

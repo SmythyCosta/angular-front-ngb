@@ -4,7 +4,7 @@ import { ReactiveFormsModule }          from '@angular/forms';
 
 import { ProductComponent }     from './product-list/product.component';
 import { ProductFormComponent } from './product-form/product-form.component';
-import { ProductService }       from '../_services/index';
+import { ProductService }       from '../_services/product.service';
 import { ProductRoutes }        from './product.routes';
 
 @NgModule({
