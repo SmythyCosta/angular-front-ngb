@@ -4,7 +4,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 @Injectable()
 export class ProductService {
 
-    private pathApi: String = '';
+    private pathApi: String = 'http://127.0.0.1:8000';
 
     constructor(private http: Http) { }
 
@@ -34,5 +34,11 @@ export class ProductService {
     getProductInfo(id) {
         return this.http.post(this.pathApi+'/api/get-product-details', { id: id }).map((response: Response) => response.json());
     }
+
+    /**
+    productDelete(id) {
+        return this.http.post(this.pathApi+'/api/product-delete', { id: id });
+    }
+     */
 
 }

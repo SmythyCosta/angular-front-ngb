@@ -21,8 +21,7 @@ export class ProductListComponent implements OnInit {
     constructor(
         public router: Router,
         private http: Http,
-        private dataService: ProductService,
-        private dataSericeCategory: CategoryService
+        private dataService: ProductService
     ) { }
 
     
@@ -61,12 +60,19 @@ export class ProductListComponent implements OnInit {
     }
 
     /**
-    allCategory(){
-        this.dataSericeCategory.getAllCategory()
-            .subscribe( data => { 
-                this.categoryList = data.cat;
-        });
+    delete(id) {
+        this.dataService.productDelete(id)
+            .subscribe(data => {
+                if ( data.status == 200 ) {
+                    alert('Product Delete successful');
+                    this.allProduct();
+                } else {
+                    alert('Product Assigned Product');
+                }
+            }, error => {
+                alert(error);
+            });
     }
-    */
+     */
 
 }

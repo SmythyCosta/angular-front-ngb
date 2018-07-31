@@ -6,7 +6,6 @@ import { ProductListComponent }     from './product-list/product-list.component'
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductService }       from '../_services/product.service';
 import { ProductRoutes }        from './product.routes';
-import { CategoryService }      from '../_services/category.service';
 
 @NgModule({
     imports: [
@@ -18,6 +17,6 @@ import { CategoryService }      from '../_services/category.service';
         ProductListComponent, ProductFormComponent
     ],
     exports: [ ProductListComponent, ProductFormComponent ],
-    providers: [ProductService, CategoryService]
+    providers: [ProductService]
 })
 export class ProductModule { }
