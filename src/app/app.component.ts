@@ -21,12 +21,13 @@ export class AppComponent {
 
         let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
 
-        
+        /**
         stream.map(res => res.json())
         .subscribe(categoryList => {
             this.categoryList = categoryList;
             console.log(this.categoryList);
         }, error => console.log(error));
+         */
         
 
         /** 

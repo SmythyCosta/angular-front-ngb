@@ -67,6 +67,7 @@ export class ProductComponent implements OnInit {
     lodingImage = false;
 
     ngOnInit() {
+        this.allProduct();
     }
 
 
