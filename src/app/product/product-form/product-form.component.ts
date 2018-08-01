@@ -56,9 +56,20 @@ export class ProductFormComponent implements OnInit {
             .subscribe(data => {
                 this.cat = data.cat;
             });
+
     }
 
-
+    /**
+     * 
+     * @param id 
+     * Captura o id da categoria e passa como parametro
+     * atraves do evento => onchange Event.
+     * https://www.w3schools.com/jsref/event_onchange.asp
+     * 
+     * buscar a subCategoria
+     * para popular o select
+     * <select formControlName="subCategory">
+     */
     selectCat(id) {
         this.dataService.getSubCategory(id)
             .subscribe(data => {
@@ -66,12 +77,25 @@ export class ProductFormComponent implements OnInit {
             });
     }
 
-
+    /**
+     * 
+     * @param val 
+     * val => productAddForm
+     * 
+     * Salva os Inputs do formulario
+     */
     save(val) {
+        //função para tratar a inserção dos arquivos
         this.insertAction(val);
     }
 
-
+    /**
+     * 
+     * @param val 
+     * val => productAddForm
+     * 
+     * Trata a inserção dos arquivos.
+     */
     insertAction(val) {
 
         let formData: FormData = new FormData();
