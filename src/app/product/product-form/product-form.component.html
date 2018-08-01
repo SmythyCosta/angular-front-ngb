@@ -58,16 +58,16 @@
 
                     <!-- 
                     <div class="form-group" *ngIf="product.category !=''">-->
-                        <!-- 
-                        <div class="form-group">
-                            <label for="subCategory">Sub Category</label> 
-                            <select id="subCategory" class="form-control" formControlName="subCategory" required [(ngModel)]="product.subCategory">
-                                <option value="" selected>Please Select</option>
-                                <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
-                            </select>
-                        </div>
-                        -->
-                        <!-- 
+
+                    <div class="form-group">
+                        <label for="subCategory">Sub Category</label>
+                        <select id="subCategory" class="form-control" formControlName="subCategory" required [(ngModel)]="product.subCategory">
+                            <option value="" selected>Please Select</option>
+                            <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+
+                    <!-- 
                     </div>-->
 
                     <div class="form-group">
@@ -110,10 +110,35 @@
 		                    </div>
                         </div>
                         -->
+                    
+                        <!-- 
+                    <div class="form-group row">
+                        <label class="col-md-5 form-control-label">image</label>
+                        <div class="col-md-7">
+                            <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image"
+                            />
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <label class="btn btn-primary">
+                                        <samp>Browse</samp>...
+                                        <input type="file" accept="{{fileType}}" style="display: none;" (change)="fileChange($event)" [attr.multiple]="allowMultiple">
+                                    </label>
+                                </span>
+                                <input type="text" class="form-control" [value]="DisplayedText" disabled="" [class.ng-invalid-right]="required && !DisplayedText"
+                                    [class.ng-valid-right]="required && DisplayedText" style="height: 35px;">
+                            </div>
+                        </div>
+                    </div>
+                    -->
 
-                    
-                    <button type="submit" class="btn btn-primary" [disabled]="!productAddForm.valid" (click) ="save(this.product)">Save</button>
-                    
+                    <div class="form-group">
+                        <label for="file">Image</label>
+                        <input type="file" class="form-control-file" accept="{{fileType}}" (change)="fileChange($event)" [attr.multiple]="allowMultiple">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary" [disabled]="!productAddForm.valid" (click)="save(this.product)">Save</button>
+
 
                 </form>
 
