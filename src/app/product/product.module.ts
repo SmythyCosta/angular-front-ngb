@@ -1,6 +1,8 @@
 import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { ProductListComponent }     from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
@@ -11,6 +13,7 @@ import { ProductRoutes }        from './product.routes';
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         ProductRoutes
     ],
     declarations: [

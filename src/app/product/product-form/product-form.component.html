@@ -36,7 +36,7 @@
             <div class="col-md-8">
 
 
-                <form method="post" id="categoryForm" enctype="multipart/form-data" [formGroup]="productAddForm">
+                <form method="post" enctype="multipart/form-data" [formGroup]="productAddForm">
 
                     <div class="form-group">
                         <label for="serial_number">Serial Code</label>
@@ -45,12 +45,12 @@
 
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" required [(ngModel)]="product.name">
+                        <input type="text" id="name" class="form-control" formControlName="name" required [(ngModel)]="product.name">
                     </div>
 
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select name="category" id="category" class="form-control" required [(ngModel)]="product.category" (ngModelChange)="selectCat($event)">
+                        <select id="category" class="form-control" formControlName="category" required [(ngModel)]="product.category" (ngModelChange)="selectCat($event)">
                             <option value="" selected disabled>Please Select</option>
                             <option *ngFor="let item of cat" value="{{item.id}}">{{item.name}}</option>
                         </select>
@@ -58,34 +58,36 @@
 
                     <!-- 
                     <div class="form-group" *ngIf="product.category !=''">-->
+                        <!-- 
                         <div class="form-group">
-                            <label for="subCategory">Sub Category</label>
-                            <select name="subCategory" id="subCategory" class="form-control" required [(ngModel)]="product.subCategory">
+                            <label for="subCategory">Sub Category</label> 
+                            <select id="subCategory" class="form-control" formControlName="subCategory" required [(ngModel)]="product.subCategory">
                                 <option value="" selected>Please Select</option>
                                 <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
                             </select>
                         </div>
+                        -->
                         <!-- 
                     </div>-->
 
                     <div class="form-group">
                         <label for="purchase_price">Purchase price</label>
-                        <input type="text" name="purchase_price" id="purchase_price" class="form-control" required [(ngModel)]="product.purchase_price">
+                        <input type="text" id="purchase_price" class="form-control" formControlName="purchase_price" required [(ngModel)]="product.purchase_price">
                     </div>
 
                     <div class="form-group">
                         <label for="selling_price">Selling price</label>
-                        <input type="text" name="selling_price" id="selling_price" class="form-control" required [(ngModel)]="product.selling_price">
+                        <input type="text" id="selling_price" class="form-control" formControlName="selling_price" required [(ngModel)]="product.selling_price">
                     </div>
 
                     <div class="form-group">
                         <label for="note">Note</label>
-                        <textarea name="note" id="note" class="form-control" rows="3" required [(ngModel)]="product.note"></textarea>
+                        <textarea id="note" class="form-control" rows="3" formControlName="note" required [(ngModel)]="product.note"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control" required [(ngModel)]="product.status">
+                        <select id="status" class="form-control" formControlName="status" required [(ngModel)]="product.status">
                             <option value="1">Active</option>
                             <option value="0">Deactive</option>
                         </select>
@@ -110,7 +112,7 @@
                         -->
 
                     
-                    <button type="submit" class="btn btn-primary" (click)="save(this.product)"> Submit </button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!productAddForm.valid" (click) ="save(this.product)">Save</button>
                     
 
                 </form>

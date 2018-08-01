@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../_services/product.service';
 
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -13,10 +13,11 @@ import { Router } from '@angular/router';
 })
 export class ProductFormComponent implements OnInit {
 
+    cat = {};
     subCat: any[] = [];
     product = {};
 
-    fileList:any;
+    fileList: any;
 
     productAddForm: FormGroup;
 
@@ -27,7 +28,34 @@ export class ProductFormComponent implements OnInit {
 
     ngOnInit() {
 
+        /**
+         * FormGroup = productAddForm
+         * https://angular.io/guide/reactive-forms
+         */
+        this.productAddForm = new FormGroup({
+            serial_number: new FormControl(""),
+            name: new FormControl("", Validators.compose([Validators.required])),
+            category: new FormControl("", Validators.compose([Validators.required])),
+            subCategory: new FormControl(""),
+            purchase_price: new FormControl("", Validators.compose([Validators.required])),
+            selling_price: new FormControl("", Validators.compose([Validators.required])),
+            note: new FormControl(""),
+            status: new FormControl(""),
+        });
+
+        /**
+         * Retorn o Json de categorias 
+         * do Serviço Product
+         * 
+         * Vai popular o select
+         * <select formControlName="category">
+         */
+        this.dataService.getCategory()
+            .subscribe(data => {
+                this.cat = data.cat;
+            });
     }
+
 
     selectCat(id) {
         this.dataService.getSubCategory(id)
@@ -45,10 +73,12 @@ export class ProductFormComponent implements OnInit {
     insertAction(val) {
 
         let formData: FormData = new FormData();
+
         if (this.fileList != undefined) {
             let file: File = this.fileList[0];
             formData.append('file', file, file.name);
         }
+
         formData.append('serial_number', this.productAddForm.value.serial_number);
         formData.append('name', this.productAddForm.value.name);
         formData.append('category', this.productAddForm.value.category);
