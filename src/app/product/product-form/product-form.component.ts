@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../_services/product.service';
-
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
+import { Subject } from 'rxjs/Rx';
 
 
 
@@ -12,6 +13,12 @@ import { Router } from '@angular/router';
     styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+
+    @Input() allowMultiple: boolean;
+    @Input() fileType: string;
+    @Input() required: boolean;
+    @Input() maxSizeInKb: number;
+    @Output() onSelection = new EventEmitter<FileList>();
 
     cat = {};
     subCat: any[] = [];
@@ -23,6 +30,7 @@ export class ProductFormComponent implements OnInit {
 
     constructor(
         public router: Router,
+        private http:Http,
         private dataService: ProductService
     ) { }
 
