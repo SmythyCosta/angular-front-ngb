@@ -31,6 +31,8 @@ export class ProductFormComponent implements OnInit {
         /**
          * FormGroup = productAddForm
          * https://angular.io/guide/reactive-forms
+         * 8 - inputs
+         * 1 - upload de arquivo
          */
         this.productAddForm = new FormGroup({
             serial_number: new FormControl(""),
