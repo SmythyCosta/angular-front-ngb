@@ -95,6 +95,7 @@
 
                     <div class="form-group">
                         <label for="file">Image</label>
+                        <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image" />
                         <input type="file" class="form-control-file" accept="{{fileType}}" (change)="fileChange($event)" [attr.multiple]="allowMultiple">
                     </div>
 

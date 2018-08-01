@@ -169,7 +169,6 @@ export class ProductFormComponent implements OnInit {
 
     /**
      * @param id 
-     * @param content 
      * Edição de Produto
      */
     edit(id) {
