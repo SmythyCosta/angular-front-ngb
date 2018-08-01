@@ -19,6 +19,8 @@ export class ProductFormComponent implements OnInit {
     @Input() required: boolean;
     @Input() maxSizeInKb: number;
     @Output() onSelection = new EventEmitter<FileList>();
+    
+    DisplayedText: string = "";
 
     cat = {};
     subCat: any[] = [];
@@ -43,6 +45,8 @@ export class ProductFormComponent implements OnInit {
          * 1 - upload de arquivo
          */
         this.productAddForm = new FormGroup({
+            //Validators
+            //https://angular.io/guide/form-validation
             serial_number: new FormControl(""),
             name: new FormControl("", Validators.compose([Validators.required])),
             category: new FormControl("", Validators.compose([Validators.required])),
@@ -68,7 +72,6 @@ export class ProductFormComponent implements OnInit {
     }
 
     /**
-     * 
      * @param id 
      * Captura o id da categoria e passa como parametro
      * atraves do evento => onchange Event.
@@ -86,10 +89,8 @@ export class ProductFormComponent implements OnInit {
     }
 
     /**
-     * 
      * @param val 
      * val => productAddForm
-     * 
      * Salva os Inputs do formulario
      */
     save(val) {
@@ -98,12 +99,10 @@ export class ProductFormComponent implements OnInit {
     }
 
     /**
-     * 
      * @param val 
      * val => productAddForm
-     * 
      * Trata a inserção dos arquivos.
-     */
+    */
     insertAction(val) {
 
         let formData: FormData = new FormData();
@@ -139,6 +138,52 @@ export class ProductFormComponent implements OnInit {
                 }, error => {
                     alert(error);
                 });
+        }
+    }
+
+    
+    /**
+     * @event
+     * The event occurs when the content of a form element, 
+     * the selection, or the checked state have changed.
+    */
+    fileChange(event: any) {
+
+        this.fileList = event.target.files;
+        let hasFile = this.fileList && this.fileList.length > 0;
+        
+        if (hasFile) {
+            
+            var extension = this.fileList[0].name.substring(this.fileList[0].name.lastIndexOf('.'));
+            
+            // Only process image files.
+            var validFileType = ".jpg , .png , .bmp";
+            
+            if (validFileType.toLowerCase().indexOf(extension) < 0) {
+                alert("please select valid file type. The supported file types are .jpg , .png , .bmp");
+                this.fileList = null;
+                this.DisplayedText = "";
+                return false;
+            }
+
+            if (this.fileList[0].size > 165535) {
+                alert(`File size is more than 165 Kb`);
+                this.fileList = null;
+                this.DisplayedText = "";
+                return false;
+            }
+
+            let multipleFile = this.fileList.length > 1;
+            if (multipleFile) {
+                this.DisplayedText = this.fileList.length + ' file(s) has been selected';
+            }
+            else {
+                let file: File = this.fileList[0];
+                this.DisplayedText = file.name;
+            }
+            
+            this.onSelection.emit(this.fileList);
+
         }
     }
 
