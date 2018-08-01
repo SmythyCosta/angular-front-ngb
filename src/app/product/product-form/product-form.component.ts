@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../_services/product.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Rx';
 
@@ -19,7 +19,7 @@ export class ProductFormComponent implements OnInit {
     @Input() required: boolean;
     @Input() maxSizeInKb: number;
     @Output() onSelection = new EventEmitter<FileList>();
-    
+
     DisplayedText: string = "";
 
     cat = {};
@@ -30,13 +30,39 @@ export class ProductFormComponent implements OnInit {
 
     productAddForm: FormGroup;
 
+    getProduct = {
+        id: '',
+        serial_number: '',
+        name: '',
+        category_id: '',
+        sub_category_id: '',
+        purchase_price: '',
+        selling_price: '',
+        note: '',
+        status: '',
+        image: ''
+    };
+
     constructor(
         public router: Router,
-        private http:Http,
+        private routeParams: ActivatedRoute,
+        private http: Http,
         private dataService: ProductService
     ) { }
 
     ngOnInit() {
+
+        /**
+         * Check id
+         * Verifica qual o valor do id
+         */
+        this.routeParams.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+            if (id) {
+                this.edit(id);
+            }
+        });
+
 
         /**
          * FormGroup = productAddForm
@@ -141,7 +167,41 @@ export class ProductFormComponent implements OnInit {
         }
     }
 
-    
+    /**
+     * @param id 
+     * @param content 
+     * Edição de Produto
+     */
+    edit(id) {
+        this.DisplayedText = '';
+        this.dataService.getProduct(id)
+            .subscribe(data => {
+                
+                this.getProduct = data.product;
+                let sub_category_id;
+                
+                if (this.getProduct.sub_category_id == null) {
+                    sub_category_id = '';
+                } else {
+                    sub_category_id = this.getProduct.sub_category_id
+                }
+
+                this.product = {
+                    id: this.getProduct.id,
+                    serial_number: this.getProduct.serial_number,
+                    name: this.getProduct.name,
+                    category: this.getProduct.category_id,
+                    subCategory: sub_category_id,
+                    purchase_price: this.getProduct.purchase_price,
+                    selling_price: this.getProduct.selling_price,
+                    note: this.getProduct.note,
+                    status: this.getProduct.status,
+                    image: this.getProduct.image
+                };
+
+            });
+    }
+
     /**
      * @event
      * The event occurs when the content of a form element, 
@@ -151,14 +211,14 @@ export class ProductFormComponent implements OnInit {
 
         this.fileList = event.target.files;
         let hasFile = this.fileList && this.fileList.length > 0;
-        
+
         if (hasFile) {
-            
+
             var extension = this.fileList[0].name.substring(this.fileList[0].name.lastIndexOf('.'));
-            
+
             // Only process image files.
             var validFileType = ".jpg , .png , .bmp";
-            
+
             if (validFileType.toLowerCase().indexOf(extension) < 0) {
                 alert("please select valid file type. The supported file types are .jpg , .png , .bmp");
                 this.fileList = null;
@@ -181,7 +241,7 @@ export class ProductFormComponent implements OnInit {
                 let file: File = this.fileList[0];
                 this.DisplayedText = file.name;
             }
-            
+
             this.onSelection.emit(this.fileList);
 
         }
