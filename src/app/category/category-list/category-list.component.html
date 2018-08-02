@@ -31,6 +31,7 @@
             <div class="col-md-12">
                 <button type="button" class="btn btn-danger" routerLink="/category">List</button>
                 <button type="button" class="btn btn-primary" routerLink="/category/form">Add</button>
+                Rows {{countJson}}
             </div>
         </div>
 
@@ -41,6 +42,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#Sl</th>
                                 <th>Category</th>
                                 <th>Description</th>
                                 <th>Status</th>
@@ -48,7 +50,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let obj of categoryList">
+                            <tr *ngFor="let obj of categoryList; let i = index">
+                                <td>{{i+1}}</td>
                                 <td>{{obj.name}}</td>
                                 <td>{{obj.description}}</td>
                                 <td>
