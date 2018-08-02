@@ -3,6 +3,8 @@ import { Router }               from '@angular/router';
 import { Http }                 from '@angular/http';
 import { SubCategoryService }   from '../_services/sub-category.service';
 import { subCategoryInterface } from '../_interfaces/sub-category.interface';
+import $ from 'jquery/dist/jquery';
+
 
 @Component({
     selector: 'app-sub-category',
@@ -14,6 +16,8 @@ export class SubCategoryComponent implements OnInit {
     public subCategoryList: subCategoryInterface[];
     public countJson:number;
 
+    dtOptions: DataTables.Settings = {};
+
     constructor(
         public router: Router,
         private http: Http,
@@ -22,6 +26,10 @@ export class SubCategoryComponent implements OnInit {
 
 
     ngOnInit() {
+        this.dtOptions = {
+            pagingType: 'full_numbers'
+          };
+          
         this.allSubCategory();
     }
 

@@ -33,9 +33,8 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="col">
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
                         <thead>
                             <tr>
                                 <th>#Sl</th>
@@ -44,11 +43,12 @@
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let obj of subCategoryList; let i = index">
-                                    <td>{{i+1}}</td>
+                                <td>{{i+1}}</td>
                                 <td>{{obj.name}}</td>
                                 <td>{{obj.categoryName}}</td>
                                 <td>{{obj.description}}</td>
@@ -58,14 +58,14 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button>
-
+                                </td>
+                                <td>
                                     <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/sub-category/form', obj.id]"> Edit </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
         </div>
 
     </div>
