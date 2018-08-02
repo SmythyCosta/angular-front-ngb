@@ -21,7 +21,7 @@ export class SubCategoryFormComponent implements OnInit {
         status: ''
       };
 
-      allcategory = {};
+      allcategory:Object[] = [];
     
 
     constructor(

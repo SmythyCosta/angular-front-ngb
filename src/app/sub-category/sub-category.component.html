@@ -46,8 +46,8 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let obj of subCategoryList">
+                                    <td>{{obj.categoryName}}</td>
 									<td>{{obj.name}}</td>
-									<td>{{obj.categoryName}}</td>
 									<td>{{obj.description}}</td>
                                     <td>
                                         <span *ngIf="obj.status==1" class="badge badge-success">Active</span>
