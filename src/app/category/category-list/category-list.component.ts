@@ -29,7 +29,7 @@ export class CategoryListComponent implements OnInit {
 
     /**
      * @returns
-     * All Categories
+     * All Entity
      */
     allCategory() {
         this.dataService.getAllCategory()
@@ -41,7 +41,7 @@ export class CategoryListComponent implements OnInit {
 
     /**
      * @param obj 
-     * Delete
+     * Delete Entity
      */
     delete(id) {
 
@@ -61,20 +61,17 @@ export class CategoryListComponent implements OnInit {
                 alert(error);
             });
         }
-        //else{
-        //    alert('Could not delete');
-        //}
 
     }
 
     /**
      * @param obj 
-     * 
      * *********** tutorial ***********
      * length (data);           // returns pai
      * length (data.name_data)  // returns filho
      */
     lengthJson(obj) {
+        //count elements
         return Object.keys(obj).length;
     }
     

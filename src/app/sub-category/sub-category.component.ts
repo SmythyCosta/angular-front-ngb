@@ -12,6 +12,7 @@ import { subCategoryInterface } from '../_interfaces/sub-category.interface';
 export class SubCategoryComponent implements OnInit {
 
     public subCategoryList: subCategoryInterface[];
+    public countJson:number;
 
     constructor(
         public router: Router,
@@ -24,15 +25,22 @@ export class SubCategoryComponent implements OnInit {
         this.allSubCategory();
     }
 
-
+    /**
+     * @returns
+     * All Entity
+     */
     allSubCategory() {
         this.dataService.getAllSubCategory()
             .subscribe(data => {
                 this.subCategoryList = data.subCat;
+                this.countJson = this.lengthJson(this.subCategoryList);
             });
     }
 
-
+    /**
+     * @param obj 
+     * Delete Entity
+     */
     delete(id) {
         this.dataService.subCategoryDelete(id)
             .subscribe(data => {
@@ -45,6 +53,17 @@ export class SubCategoryComponent implements OnInit {
             }, error => {
                 alert(error);
             });
+    }
+
+    /**
+     * @param obj 
+     * *********** tutorial ***********
+     * length (data);           // returns pai
+     * length (data.name_data)  // returns filho
+    */
+    lengthJson(obj) {
+        //count elements
+        return Object.keys(obj).length;
     }
 
 
