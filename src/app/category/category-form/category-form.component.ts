@@ -11,7 +11,10 @@ import { CategoryService } from '../../_services/category.service';
     styleUrls: ['./category-form.component.css']
 })
 export class CategoryFormComponent implements OnInit {
-        
+
+    public titlePage:String = "Category";
+    public titleBarNavegation:String = "Add";
+
     cat = {};
     
     getCat = {
@@ -21,7 +24,6 @@ export class CategoryFormComponent implements OnInit {
         status: ''
     };
     
-
     constructor(
         public  router: Router,
         private routeParams: ActivatedRoute,
@@ -33,6 +35,7 @@ export class CategoryFormComponent implements OnInit {
         this.routeParams.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if (id) {
+                this.titleBarNavegation = "Edit";
                 this.edit(id);
             }
         });
@@ -44,7 +47,7 @@ export class CategoryFormComponent implements OnInit {
                 .subscribe( data => {
                     alert('Category Create successful');
                     this.cat = {};
-                },error =>{
+                },error => {
                     alert('Error in Category');
                 });
         }else{

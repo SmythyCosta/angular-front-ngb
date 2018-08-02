@@ -13,6 +13,7 @@ import { CategoryInterface } from '../../_interfaces/category.interface';
 export class CategoryListComponent implements OnInit {
 
     public categoryList: CategoryInterface[];
+    public titlePage:String = "Category";
 
     constructor(
         public router: Router,

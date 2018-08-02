@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2 style="text-align: center">Category: </h2>
+                <h2 style="text-align: center"> {{titlePage}} </h2>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
                         <li class="breadcrumb-item">
                             Category
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Add</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{titleBarNavegation}}</li>
                     </ol>
                 </nav>
             </div>
@@ -28,28 +28,18 @@
             <div class="col-md-12">
                 <button type="button" class="btn btn-danger" routerLink="/category">List</button>
                 <button type="button" class="btn btn-primary" routerLink="/category/form">Add</button>
-                <!-- 
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-success">Success</button>
-                <button type="button" class="btn btn-danger">Danger</button>
-                <button type="button" class="btn btn-warning">Warning</button>
-                <button type="button" class="btn btn-info">Info</button>
-                <button type="button" class="btn btn-light">Light</button>
-                <button type="button" class="btn btn-dark">Dark</button>
-                -->
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form id="categoryForm" method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <input type="text" name="category" id="category" class="form-control" aria-describedby="categoryHelp" placeholder="Enter category name"
+                        <input type="text" name="category" id="category" class="form-control" placeholder="Enter category name"
                             required [(ngModel)]="cat.category">
-                        <small id="categoryHelp" class="form-text text-muted">We'll never share your category with anyone else.</small>
                     </div>
 
                     <div class="form-group">
