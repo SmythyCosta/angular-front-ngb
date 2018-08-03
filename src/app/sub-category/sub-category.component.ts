@@ -1,10 +1,13 @@
-import { Component, OnInit }    from '@angular/core';
+import { Component, OnInit, TemplateRef }    from '@angular/core';
 import { Router }               from '@angular/router';
 import { Http }                 from '@angular/http';
 import { Subject } from 'rxjs/Rx';
 import { SubCategoryService }   from '../_services/sub-category.service';
 import { subCategoryInterface } from '../_interfaces/sub-category.interface';
 import $ from 'jquery/dist/jquery';
+
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
 
 
 @Component({
@@ -13,6 +16,11 @@ import $ from 'jquery/dist/jquery';
     styleUrls: ['./sub-category.component.css']
 })
 export class SubCategoryComponent implements OnInit {
+
+    //modal
+    public modalRef: BsModalRef; // {1}
+    public info:String;
+    public modelDelete: String;
 
     public subCategoryList: subCategoryInterface[];
     public countJson:number;
@@ -24,7 +32,8 @@ export class SubCategoryComponent implements OnInit {
     constructor(
         public router: Router,
         private http: Http,
-        private dataService: SubCategoryService
+        private dataService: SubCategoryService,
+        private modalService: BsModalService
     ) { }
 
 
@@ -35,6 +44,16 @@ export class SubCategoryComponent implements OnInit {
           };
 
         this.allSubCategory();
+    }
+
+    /**
+     * @param template 
+     * Modal Bootstrap
+     */
+    public openModal(template: TemplateRef<any>, info, id) {
+        this.modalRef = this.modalService.show(template); // {3}
+        this.info = info;
+        this.modelDelete = id;
     }
 
     /**
@@ -58,8 +77,9 @@ export class SubCategoryComponent implements OnInit {
         this.dataService.subCategoryDelete(id)
             .subscribe(data => {
                 if (data.status == 200) {
-                    alert('SubCategory Delete successful');
+                    //alert('SubCategory Delete successful');
                     this.allSubCategory();
+                    this.router.navigate(['/sub-category']);
                 } else {
                     alert('SubCategory Assigned Product');
                 }

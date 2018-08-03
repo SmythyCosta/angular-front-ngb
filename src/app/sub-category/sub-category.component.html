@@ -60,10 +60,50 @@
                                     <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button>
 
                                     <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/sub-category/form', obj.id]"> Edit </button>
+
+                                    <button type="button" class="btn btn-info" (click)="openModal(template, obj.name, obj.id)">Create template modal</button>
+
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- 
+                    <ng-template #template>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Modal</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            This is a modal.
+                        </div>
+                    </ng-template>
+                    -->
+
+                    <!-- Modal -->
+                    <ng-template #template>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...Dado {{info}} - id: {{modelDelete}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="delete(modelDelete)">Deletar agora</button>
+                            </div>
+                        </div>
+                    </ng-template>
+
+
+
+
                 </div>
             </div>
         </div>
