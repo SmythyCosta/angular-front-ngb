@@ -37,5 +37,36 @@
 
 
 
-## Snippet
+## Snippet JohnPapa
     https://github.com/johnpapa/vscode-angular-snippets
+
+
+
+
+## DataTables
+    Passamos por problemas para fazer o uso da dataTables
+    foi resolvido atraves dos foruns de suport.
+
+    * Dependencias:
+        https://l-lin.github.io/angular-datatables/#/getting-started
+        npm install jquery --save
+        npm install datatables.net --save
+        npm install datatables.net-dt --save
+        npm install angular-datatables --save
+        npm install @types/jquery --save-dev
+        npm install @types/datatables.net --save-dev
+    
+        https://www.npmjs.com/package/datatables.net-bs4
+        npm install datatables.net-bs4
+
+
+    * problemas com JQuery
+    https://stackoverflow.com/questions/50793325/angular-6-referenceerror-is-not-defined-error-with-jquery
+
+
+    * problema no funcionamento da grid
+    https://stackoverflow.com/questions/48768444/data-table-is-not-showing-correct-result-in-angular-4-application
+
+
+    * RxJS: Entendendo os assuntos
+        https://blog.angularindepth.com/rxjs-understanding-subjects-5c585188c3e1

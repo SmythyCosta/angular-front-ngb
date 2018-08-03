@@ -33,8 +33,9 @@
         </div>
 
         <div class="row">
-                <div class="col">
-                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-hover" width="100%">
                         <thead>
                             <tr>
                                 <th>#Sl</th>
@@ -42,7 +43,6 @@
                                 <th>Category</th>
                                 <th>Description</th>
                                 <th>Status</th>
-                                <th>Action</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -58,14 +58,14 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button>
-                                </td>
-                                <td>
+
                                     <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/sub-category/form', obj.id]"> Edit </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
         </div>
 
     </div>
