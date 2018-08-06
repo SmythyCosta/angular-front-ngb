@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef }    from '@angular/core';
 import { Router }               from '@angular/router';
 import { Http }                 from '@angular/http';
-import { Subject } from 'rxjs/Rx';
+import { Subject }              from 'rxjs/Rx';
 import { SubCategoryService }   from '../_services/sub-category.service';
 import { subCategoryInterface } from '../_interfaces/sub-category.interface';
 import $ from 'jquery/dist/jquery';
@@ -77,9 +77,10 @@ export class SubCategoryComponent implements OnInit {
         this.dataService.subCategoryDelete(id)
             .subscribe(data => {
                 if (data.status == 200) {
-                    //alert('SubCategory Delete successful');
+                    this.dtTrigger = new Subject(); //  DataTable
                     this.allSubCategory();
-                    this.router.navigate(['/sub-category']);
+                    alert('Delete successful');
+                    //this.router.navigate(['/sub-category']);
                 } else {
                     alert('SubCategory Assigned Product');
                 }
