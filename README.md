@@ -70,3 +70,8 @@
 
     * RxJS: Entendendo os assuntos
         https://blog.angularindepth.com/rxjs-understanding-subjects-5c585188c3e1
+
+
+
+## Site com Tutorias Angular
+    https://www.concretepage.com/angular-2/angular-2-ngswitch-example
