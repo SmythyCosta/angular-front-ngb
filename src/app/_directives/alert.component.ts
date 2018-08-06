@@ -14,7 +14,7 @@ export class AlertComponent {
     constructor(private alertService: AlertService) { }
 
     ngOnInit() {
-        this.alertService.getMessage().subscribe(message => { this.message = message; });
+        this.alertService.getMessage().subscribe( message => { this.message = message; });
     }
 
     alertClose(){
