@@ -1,11 +1,13 @@
 <div class="content">
-    <div class="container-fuid">
+    <div class="container">
+
 
         <div class="row">
             <div class="col-md-12">
                 <h2 style="text-align: center">Sub Category: </h2>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-md-4">
@@ -24,6 +26,14 @@
             <div class="col-md-8"></div>
         </div>
 
+
+        <div class="row">
+            <div class="col-md-12">
+                <alert></alert>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col-md-12">
                 <button type="button" class="btn btn-danger" routerLink="/sub-category">List</button>
@@ -31,30 +41,29 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <form id="subCategoryForm" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="category">Category</label>  
-                        <select name="category" id="category" class="form-control" 
-                            required [(ngModel)]="subCat.category">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" class="form-control" required [(ngModel)]="subCat.category">
                             <option value=""> Please Select </option>
-							<option *ngFor="let item of allcategory" value="{{item.id}}">{{item.name}}</option>
+                            <option *ngFor="let item of allcategory" value="{{item.id}}">{{item.name}}</option>
                         </select>
-                    </div>                    
-                    
+                    </div>
+
                     <div class="form-group">
                         <label for="category">SubCategory</label>
-                        <input type="text" name="subCategory" id="subCategory" class="form-control" placeholder="Enter subCategory name"
-                            required [(ngModel)]="subCat.subCategory">
+                        <input type="text" name="subCategory" id="subCategory" class="form-control" placeholder="Enter subCategory name" required
+                            [(ngModel)]="subCat.subCategory">
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="3" 
-                            required [(ngModel)]="subCat.description"></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="3" required [(ngModel)]="subCat.description"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -64,13 +73,14 @@
                             <option value="0">Deactive</option>
                         </select>
                     </div>
-                
+
                     <button type="submit" class="btn btn-primary" (click)="save(this.subCat)"> Submit </button>
 
                 </form>
             </div>
             <div class="col-md-2"></div>
         </div>
+
 
     </div>
 </div>

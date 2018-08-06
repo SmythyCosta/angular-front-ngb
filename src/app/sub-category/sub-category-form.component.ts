@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { switchMap }            from 'rxjs/operators';
 import { Http }                 from '@angular/http';
 import { SubCategoryService }   from '../_services/sub-category.service';
+import { AlertService } from '../_services/alert.services';
 
 @Component({
     selector: 'app-sub-category-form',
@@ -28,7 +29,8 @@ export class SubCategoryFormComponent implements OnInit {
         public  router: Router,
         private routeParams: ActivatedRoute,
         private http:Http,
-        private dataService: SubCategoryService
+        private dataService: SubCategoryService,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
@@ -50,18 +52,18 @@ export class SubCategoryFormComponent implements OnInit {
         if(val.id==undefined){
 		    this.dataService.save(this.subCat)
                 .subscribe( data => {
-                    alert('SubCategory Create successful');
+                    this.alertService.success('Sub Category Create successful', true);
                     this.subCat = {};
-                },error =>{
-                    alert('Error in Category');
+                },error => {
+                    this.alertService.error(error);
                 });
         }else{
 		    this.dataService.subCategoryUpdate(this.subCat)
                 .subscribe(data => {
-                    alert('SubCategory Update successful');
+                    this.alertService.success('Sub Category Update successful', true);
                     this.router.navigate(['/sub-category']);
                 },error => {
-                    alert('Error in SubCategory Update');
+                    this.alertService.error(error);
                 });
         }
     }
