@@ -61,7 +61,6 @@ export class SubCategoryFormComponent implements OnInit {
 		    this.dataService.subCategoryUpdate(this.subCat)
                 .subscribe(data => {
                     this.alertService.success('Sub Category Update successful', true);
-                    this.router.navigate(['/sub-category']);
                 },error => {
                     this.alertService.error(error);
                 });
