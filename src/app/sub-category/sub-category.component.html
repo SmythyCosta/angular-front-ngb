@@ -28,16 +28,9 @@
 
 
         <div class="row">
-            <alert></alert>
-            <!--
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="alert alert-primary" role="alert">
-                    This is a primary alert—check it out!
-                </div>
+            <div class="col-md-12">
+                <alert></alert>
             </div>
-            <div class="col-md-1"></div>
-            -->
         </div>
 
 
@@ -53,6 +46,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
+                    
                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-hover" width="100%">
                         <thead>
                             <tr>
@@ -75,32 +69,14 @@
                                     <span *ngIf="obj.status==0" class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button>
-
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template, obj.name, obj.id)"> Delete </button>
                                     <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/sub-category/form', obj.id]"> Edit </button>
-
-                                    <button type="button" class="btn btn-info" (click)="openModal(template, obj.name, obj.id)">Create template modal</button>
-
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <!-- 
-                    <ng-template #template>
-                        <div class="modal-header">
-                            <h4 class="modal-title pull-left">Modal</h4>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            This is a modal.
-                        </div>
-                    </ng-template>
-                    -->
-
-                    <!-- Modal -->
+                    <!-- Begin Modal -->
                     <ng-template #template>
                         <div class="modal-content">
                             <div class="modal-header">
@@ -110,7 +86,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                ...Dado {{info}} - id: {{modelDelete}}
+                                You want to delete {{info}} ?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Close</button>
@@ -118,9 +94,7 @@
                             </div>
                         </div>
                     </ng-template>
-
-
-
+                    <!-- End Modal -->
 
                 </div>
             </div>

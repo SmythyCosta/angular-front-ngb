@@ -17,16 +17,18 @@ import { AlertService }               from '../_services/alert.services';
 })
 export class SubCategoryComponent implements OnInit {
 
-    //modal
-    public modalRef: BsModalRef;
-    public info: String;
-    public modelDelete: String;
+    /** variaveis relativa ao Modal */
+    public modalRef: BsModalRef; //Modal
+    public info: String;         //Modal
+    public modelDelete: String;  //Modal
+
+    /** variaveis relativa ao DataTable */
+    dtOptions: DataTables.Settings = {}; //  DataTable
+    dtTrigger = new Subject();           //  DataTable
 
     public subCategoryList: subCategoryInterface[];
     public countJson: number;
 
-    dtOptions: DataTables.Settings = {}; //  DataTable
-    dtTrigger = new Subject();           //  DataTable
 
     constructor(
         public router: Router,
@@ -97,6 +99,5 @@ export class SubCategoryComponent implements OnInit {
         //count elements
         return Object.keys(obj).length;
     }
-
 
 }
