@@ -10,7 +10,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService }               from '../_services/alert.services';
 
 
-
 @Component({
     selector: 'app-sub-category',
     templateUrl: './sub-category.component.html',
@@ -28,7 +27,6 @@ export class SubCategoryComponent implements OnInit {
 
     dtOptions: DataTables.Settings = {}; //  DataTable
     dtTrigger = new Subject();           //  DataTable
-
 
     constructor(
         public router: Router,
@@ -79,18 +77,13 @@ export class SubCategoryComponent implements OnInit {
         this.dataService.subCategoryDelete(id)
             .subscribe(data => {
                 if (data.status == 200) {
-                    
                     this.modalRef.hide();           // Fecha Modal
                     this.dtTrigger = new Subject(); // Atualiza DataTable
                     this.alertService.success('Sub-Category Delete successful', true);
-                    this.allSubCategory();          //                     
-                    //alert('Delete successful');     //
-
-                } else {
-                    alert('SubCategory Assigned Product');
+                    this.allSubCategory();                   
                 }
             }, error => {
-                alert(error);
+                this.alertService.error(error);
             });
     }
 
