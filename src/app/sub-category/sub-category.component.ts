@@ -7,6 +7,7 @@ import { subCategoryInterface } from '../_interfaces/sub-category.interface';
 import $ from 'jquery/dist/jquery';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertService }               from '../_services/alert.services';
 
 
 
@@ -33,6 +34,7 @@ export class SubCategoryComponent implements OnInit {
         public router: Router,
         private http: Http,
         private dataService: SubCategoryService,
+        private alertService: AlertService,
         private modalService: BsModalService
     ) { }
 
@@ -80,8 +82,9 @@ export class SubCategoryComponent implements OnInit {
                     
                     this.modalRef.hide();           // Fecha Modal
                     this.dtTrigger = new Subject(); // Atualiza DataTable
+                    this.alertService.success('Sub-Category Delete successful', true);
                     this.allSubCategory();          //                     
-                    alert('Delete successful');     //
+                    //alert('Delete successful');     //
 
                 } else {
                     alert('SubCategory Assigned Product');
