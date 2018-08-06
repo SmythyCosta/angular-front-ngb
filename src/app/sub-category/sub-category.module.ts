@@ -7,6 +7,7 @@ import { SubCategoryFormComponent }     from './sub-category-form.component';
 import { SubCategoryService }           from '../_services/sub-category.service';
 import { SubCategoryRoutes }            from './sub-category.routes';
 import { DataTablesModule }             from 'angular-datatables';
+import { AlertService }                 from '../_services/alert.services';
 
 @NgModule({
     imports: [
@@ -17,6 +18,6 @@ import { DataTablesModule }             from 'angular-datatables';
     ],
     declarations: [SubCategoryComponent, SubCategoryFormComponent],
     exports: [SubCategoryComponent, SubCategoryFormComponent],
-    providers: [SubCategoryService]
+    providers: [SubCategoryService, AlertService]
 })
 export class SubCategoryModule { }
