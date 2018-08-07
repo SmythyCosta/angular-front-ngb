@@ -8,6 +8,12 @@ export class AuthenticationService{
 
     constructor(private http: Http) { }
 
+    /**
+     * @param data 
+     * Faz o login do usuario.
+     * Atenticação.
+     * Desc: salva o o token no localStorage.
+     */
     login(data) {
         return this.http.post(this.pathApi+'/api/user-login', data)
             .map((response: Response) => {
@@ -19,9 +25,15 @@ export class AuthenticationService{
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-
                 return user;
-
             });
+    }
+
+    /**
+     * Faz logout
+     * Desc: Remove o toke do localStorage
+     */
+    logout() {
+        localStorage.removeItem('currentUser');
     }
 }
