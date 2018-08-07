@@ -72,6 +72,7 @@ export class LoginComponent implements OnInit {
 	        this.dataService.login(UserInput)
 	            .subscribe(
 	                data => {
+                        console.log(data);
 	                    if(data.status==400){
     	                  	this.show = true;
     	                  	this.textMesg = data.mesg;
