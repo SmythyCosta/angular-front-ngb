@@ -4,6 +4,7 @@ import { FormsModule }  from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginRoutes } from './login.routes';
+import { LoginComponent } from './login.component';
 
 
 @NgModule({
