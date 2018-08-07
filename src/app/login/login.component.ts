@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
          * o token do usuario armazenado.
          */
         if (localStorage.getItem('currentUser') !=null) {
-            // this.router.navigate(['/dashboard']);
+            //this.router.navigate(['/dashboard']);
         }
 
         /**
@@ -72,7 +72,6 @@ export class LoginComponent implements OnInit {
 	        this.dataService.login(UserInput)
 	            .subscribe(
 	                data => {
-                        console.log(data);
 	                    if(data.status==400){
     	                  	this.show = true;
     	                  	this.textMesg = data.mesg;
