@@ -48,12 +48,17 @@ export class LoginComponent implements OnInit {
         */ 
         this.setingService.getSettingData()
             .subscribe(data => { 
-                        this.setting = {image:data.setting.image}                        
+                        this.setting = {image:data.setting.image} 
+                        
+                        console.log(this.setting);                       
             });
     
     }
 
-
+    /**
+     * Efetua o procedimento de
+     * Autenticação.
+     */
     onLoggedin() {
     
     	this.loading = true;
