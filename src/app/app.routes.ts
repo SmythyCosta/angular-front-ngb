@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
     
-    //{ path: 'dashboard',        redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'login',            redirectTo: '/login', pathMatch: 'full' },
     { path: 'dashboard',        redirectTo: '/dashboard' },
     { path: 'category',         redirectTo: '/category' },
     { path: 'sub-category',     redirectTo: '/sub-category' },
