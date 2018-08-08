@@ -5,12 +5,12 @@ import { SettingRoutes } from './setting.routes';
 import { DirectivasModule } from '../_directives/directives.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DirectivasModule,
-    SettingRoutes
-  ],
-  declarations: [ SettingFormComponent],
-  exports:[ SettingFormComponent]
+	imports: [
+		CommonModule,
+		DirectivasModule,
+		SettingRoutes
+	],
+	declarations: [SettingFormComponent],
+	exports: [SettingFormComponent]
 })
 export class SettingModule { }
