@@ -33,9 +33,6 @@ export class SettingFormComponent implements OnInit {
     DisplayedText: string = "";
     fileList: any;
 
-    showloding = true;
-    lodingImage = false;
-
 
     constructor(
         public router: Router,
@@ -46,11 +43,6 @@ export class SettingFormComponent implements OnInit {
 
 
     ngOnInit() {
-
-        setTimeout(() => {
-            this.showloding = false;
-            this.lodingImage = true;
-        }, 500);
 
         this.settingAddForm = new FormGroup({
             company_name: new FormControl("", Validators.compose([Validators.required])),
