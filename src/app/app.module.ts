@@ -12,6 +12,8 @@ import { CategoryModule } from './category/category.module';
 import { SubCategoryModule } from './sub-category/sub-category.module';
 import { ProductModule } from './product/product.module';
 import { LoginModule } from './login/login.module';
+import { SettingModule } from './setting/setting.module';
+
 
 
 //Components
@@ -32,6 +34,7 @@ import { AppComponent } from './app.component';
         DashboardModule,
         SubCategoryModule,
         ProductModule,
+        SettingModule,
         LoginModule,
         AppRoutes
     ],
