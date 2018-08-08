@@ -75,3 +75,18 @@
 
 ## Site com Tutorias Angular
     https://www.concretepage.com/angular-2/angular-2-ngswitch-example
+
+
+
+
+## Problemas com o import de diretivas
+https://stackoverflow.com/questions/43598311/component-is-part-of-the-declaration-of-2-modules
+
+
+
+## portas Servidor em dev
+    ** Laravel
+        php artisan serve --host=fo1.dev --port=8080 
+        
+    ** Angular
+        ng serve --port 9090 
