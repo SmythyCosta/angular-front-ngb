@@ -14,6 +14,7 @@ import { SubCategoryModule } from './sub-category/sub-category.module';
 import { ProductModule } from './product/product.module';
 import { LoginModule } from './login/login.module';
 import { SettingModule } from './setting/setting.module';
+import { DirectivasModule } from './_directives/directives.module';
 //import { NgbModule }               from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -23,7 +24,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
@@ -37,9 +38,11 @@ import { AppComponent } from './app.component';
         ProductModule,
         SettingModule,
         LoginModule,
+        DirectivasModule,
         AppRoutes
     ],
     providers: [],
     bootstrap: [AppComponent]
+    //exports:[AlertComponent]
 })
 export class AppModule { }
