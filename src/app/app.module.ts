@@ -16,13 +16,11 @@ import { LoginModule } from './login/login.module';
 
 //Components
 import { AppComponent } from './app.component';
-import { SettingComponent } from './setting/setting.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        SettingComponent,
+        AppComponent
     ],
     imports: [
         AppBootstrapModule,
