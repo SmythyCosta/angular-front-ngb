@@ -22,6 +22,8 @@ export class UserService {
         return this.http.post('/api/user-update', data).map((response: Response) => response.json());
     }
 
-
+    userDelete(id) {
+        return this.http.post('/api/user-delete', { id: id });
+    }
 
 }
