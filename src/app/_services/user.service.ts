@@ -10,4 +10,10 @@ export class UserService {
         return this.http.post('/api/user-create',data).map((response: Response) => response.json());
     }
 
+    getAlluser(){
+        return  this.http.get('/api/all-user').map((response: Response) => response.json());
+      }
+
+    
+
 }
