@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { CanActivate, Router } from "@angular/router";
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { AppService } from "../_services/app.service";
 import { AlertService } from "../_services/alert.services";
 
@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
         private alertService: AlertService
     ){}
     
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        throw new Error("Method not implemented.");
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        return false;
     }
 
 }
