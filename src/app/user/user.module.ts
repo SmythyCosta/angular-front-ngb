@@ -4,6 +4,7 @@ import { FormsModule }  from '@angular/forms';
 import { UserRoutesRoutes } from './user-routes';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserService } from '../_services/user.service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     declarations: [UserListComponent, UserFormComponent],
     exports: [UserListComponent, UserFormComponent],
     providers:[
-    //    UserService
+        UserService
     ]   
 })
 export class UserModule { }
