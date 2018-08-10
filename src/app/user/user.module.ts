@@ -1,20 +1,17 @@
 import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
+import { UserRoutesRoutes } from './user-routes';
 
-import { CategoryListComponent }    from './category-list/category-list.component';
-import { CategoryFormComponent }    from './category-form/category-form.component';
-import { CategoryRoutes }           from './category-routes';
-import { CategoryService }          from '../_services/category.service';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        CategoryRoutes
+        UserRoutesRoutes
     ],
-    declarations: [CategoryListComponent, CategoryFormComponent],
-    exports: [CategoryListComponent, CategoryFormComponent],
-    providers:[CategoryService]
+    declarations: [UserListComponent, UserFormComponent],
+    exports: [UserListComponent, UserFormComponent],
+    providers:[UserService]
 })
-export class CategoryModule { }
+export class UserModule { }
