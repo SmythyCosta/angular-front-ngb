@@ -18,6 +18,10 @@ export class UserService {
         return this.http.post('/api/get-user-data', { id: id }).map((response: Response) => response.json());
     }
 
+    userUpdate(data) {
+        return this.http.post('/api/user-update', data).map((response: Response) => response.json());
+    }
+
 
 
 }
