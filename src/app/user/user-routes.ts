@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes }     from '@angular/router';
-import { CategoryListComponent }    from './category-list/category-list.component';
-import { CategoryFormComponent }    from './category-form/category-form.component';
 
 
-const categoryRoutes: Routes = [
-    { path: 'category',             component: CategoryListComponent },
-    { path: 'category/form',        component: CategoryFormComponent },
-    { path: 'category/form/:id',    component: CategoryFormComponent }
+const userRoutes: Routes = [
+    { path: 'user',             component: UserListComponent },
+    { path: 'user/form',        component: UserFormComponent },
+    { path: 'user/form/:id',    component: UserFormComponent }
 ];
 
 
 @NgModule({
-    imports: [RouterModule.forChild(categoryRoutes)],
+    imports: [RouterModule.forChild(userRoutes)],
     exports: [RouterModule]
 })
-export class CategoryRoutes { }
+export class UserRoutesRoutes { }
