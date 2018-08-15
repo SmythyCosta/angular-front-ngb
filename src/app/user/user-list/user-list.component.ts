@@ -38,8 +38,6 @@ export class UserListComponent implements OnInit {
     pdf = false;
     exl = false;
 
-    dtOptions: DataTables.Settings = {}; //  DataTable
-    dtTrigger = new Subject(); //  DataTable
     userList: User[] = []; // Table Data list
 
     userAddForm: FormGroup;
@@ -102,7 +100,6 @@ export class UserListComponent implements OnInit {
             .pipe().subscribe(data => {
                 this.userList = data['user'];
                 this.countJson = this.lengthJson(this.userList);
-                this.dtTrigger.next(); // Data Table
                 this.pdf = true;
                 this.exl = true;
             });
@@ -118,7 +115,6 @@ export class UserListComponent implements OnInit {
         //if (confirm('Are you sure?')) {
         this.dataService.userDelete(id)
             .pipe().subscribe(data => {
-                this.dtTrigger = new Subject(); //  DataTable
                 this.allUser();
                 this.alertService.success('User Delete successful', true);
             }, error => {

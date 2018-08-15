@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
 
 // ==================== libs ====================
-import { DataTablesModule } from 'angular-datatables';
 
 // ==================== integrations ====================
 import { UserRoutesRoutes } from './user-routes';
@@ -18,7 +17,6 @@ import { UserService } from '../_services/user.service';
     imports: [
         CommonModule,
         FormsModule,
-        DataTablesModule,
         UserRoutesRoutes
     ],
     declarations: [UserListComponent, UserFormComponent],
