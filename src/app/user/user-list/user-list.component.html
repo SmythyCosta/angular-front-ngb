@@ -38,35 +38,36 @@
 
         <div class="row">
             <div class="col-md-12">
+
                 <div class="table-responsive">
-                    <table class="table">
+                    <table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-hover" width="100%">
                         <thead>
                             <tr>
                                 <th>#Sl</th>
-                                <th>Category</th>
-                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Type</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th class="action">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let obj of categoryList; let i = index">
+                           <tr *ngFor="let item of userList; let i = index" [attr.data-index]="i">
                                 <td>{{i+1}}</td>
-                                <td>{{obj.name}}</td>
-                                <td>{{obj.description}}</td>
-                                <td>
-                                    <span *ngIf="obj.status==1" class="badge badge-success">Active</span>
-                                    <span *ngIf="obj.status==0" class="badge badge-danger">Inactive</span>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button> 
-
-                                    <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/category/form', obj.id]"> Edit </button>
-                                </td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.address}}</td>
+                                <td>{{ ((item.type==1) ? 'Admin' : 'User')}}</td>
+                                <td><span *ngIf="item.status==1" class="badge badge-success">Active</span> <span *ngIf="item.status==0" class="badge badge-danger">Inactive</span></td>
+                                <td class="action"><button *ngIf="item.type !=1" class="btn btn-primary btn-sm" (click)="viewUserPermission(this.userList[i].id)"><i class="fa fa-user-secret"></i> Permission</button> <button *ngIf="item.type==1" class="btn btn-danger btn-sm"><i class="fa fa-user-secret"></i> All Assing</button> <button *ngIf="item.type !=1" class="btn btn-outline-danger btn-sm" (click)="delete(this.userList[i].id)">x</button> <button type="button" class="btn btn-outline-primary btn-sm" (click)="edit(this.userList[i].id,content)"><i class="fa fa-pencil fa-lg mt-1"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                  </div>
+
             </div>
         </div>
 
