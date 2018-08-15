@@ -135,6 +135,7 @@ export class UserListComponent implements OnInit {
         //if (confirm('Are you sure?')) {
         this.dataService.userDelete(id)
             .pipe().subscribe(data => {
+                this.modalRef.hide();           // Fecha Modal
                 this.dtTrigger = new Subject(); //  DataTable
                 this.allUser();
                 this.alertService.success('User Delete successful', true);

@@ -73,7 +73,14 @@
                                     -->
                                     <button *ngIf="item.type==1" class="btn btn-danger btn-sm">
                                         <i class="fa fa-user-secret"></i> All Assing</button>
+
+                                    <!-- 
+                                    Versao simples
                                     <button *ngIf="item.type !=1" class="btn btn-outline-danger btn-sm" (click)="delete(this.userList[i].id)">x</button>
+                                    -->
+                                    <button *ngIf="item.type !=1" class="btn btn-outline-danger btn-sm" (click)="delete()" (click)="openModal(template, this.userList[i].name, this.userList[i].id)">x</button>
+
+                                    
                                     <!--  
                                     <button type="button" class="btn btn-outline-primary btn-sm" (click)="edit(this.userList[i].id,content)"><i class="fa fa-pencil fa-lg mt-1"></i></button>
                                     -->
@@ -95,8 +102,15 @@
                                 You want to delete {{info}} ?
                             </div>
                             <div class="modal-footer">
+                                
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Close</button>
+                                
+                                <!-- 
+                                    Versao simples
                                 <button type="button" class="btn btn-primary" (click)="delete(modelDelete)">Deletar agora</button>
+                                -->
+                                <button type="button" class="btn btn-primary" (click)="delete(modelDelete)">Deletar agora</button>
+
                             </div>
                         </div>
                     </ng-template>
