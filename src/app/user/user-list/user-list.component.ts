@@ -22,6 +22,8 @@ class User {
 })
 export class UserListComponent implements OnInit {
 
+    public titlePage:String = "User";
+    public countJson:number;
 
     @Input() allowMultiple: boolean;
     @Input() fileType: string;
@@ -98,10 +100,42 @@ export class UserListComponent implements OnInit {
         this.dataService.getAlluser()
             .pipe().subscribe(data => {
                 this.userList = data['user'];
+                this.countJson = this.lengthJson(this.userList);
                 this.dtTrigger.next(); // Data Table
                 this.pdf = true;
                 this.exl = true;
             });
+    }
+
+    /**
+     * 
+     * @param id 
+     */
+    delete(id) {
+
+        // alert('Live Demo Button Not Working');
+        //if (confirm('Are you sure?')) {
+            this.dataService.userDelete(id)
+                .pipe().subscribe(data => {
+                    this.dtTrigger = new Subject(); //  DataTable
+                    this.allUser();
+                    this.alertService.success('User Delete successful', true);
+                }, error => {
+                    this.alertService.error(error);
+                });
+        //}
+
+    }
+
+    /**
+     * @param obj 
+     * *********** tutorial ***********
+     * length (data);           // returns pai
+     * length (data.name_data)  // returns filho
+    */
+    lengthJson(obj) {
+        //count elements
+        return Object.keys(obj).length;
     }
 
 
