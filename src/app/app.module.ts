@@ -15,6 +15,7 @@ import { ProductModule } from './product/product.module';
 import { LoginModule } from './login/login.module';
 import { SettingModule } from './setting/setting.module';
 import { DirectivasModule } from './_directives/directives.module';
+import { UserModule } from './user/user.module';
 //import { NgbModule }               from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -37,6 +38,7 @@ import { AppComponent } from './app.component';
         SubCategoryModule,
         ProductModule,
         SettingModule,
+        UserModule,
         LoginModule,
         DirectivasModule,
         AppRoutes
