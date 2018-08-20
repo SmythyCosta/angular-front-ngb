@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default" style="background-color: cadetblue;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <!-- 
+                <img width="30" [src]="'data:image/jpg;base64,'+setting.image">
+                -->
+            </a>
+            <span class="navbar-brand">Angular 5 + Bootstrap 4</span>
+        </div>
+    </div>
+</nav>
+
+
+<h1>{{title}}</h1>
+
+
+<nav>
+    <a routerLink="/dashboard"> Dashboard </a>
+    <a routerLink="/category"> Category </a>
+    <a routerLink="/sub-category"> Sub Category </a>
+    <a routerLink="/product"> Product </a>
+    <a routerLink="/setting"> Settings </a>
+    <a routerLink="/login"> Login </a>
+    <a routerLink="/user"> User </a>
+</nav>
+
+
+<main class="main">
+    <div class="container-fluid">
+        <alert></alert>
+        <router-outlet></router-outlet>
+    </div>
+</main>
+
+
+<footer class="app-footer">
+    Develop By - Smythy Costa.
+</footer>
