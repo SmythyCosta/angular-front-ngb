@@ -13,6 +13,7 @@ import { AppRoutes } from './app.routes';
 // #################### [ Layouts ] ####################
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DirectivasModule } from './_directives/directives.module';
+import { AppComponent } from './app.component';
 
 
 // #################### [ Helpers ] ####################
@@ -43,6 +44,5 @@ import { AuthGuard } from './_guards/index';
         SettingService
     ],
     bootstrap: [AppComponent]
-    //exports:[AlertComponent]
 })
 export class AppModule { }
