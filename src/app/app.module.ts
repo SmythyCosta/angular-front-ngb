@@ -25,15 +25,16 @@ import { AuthGuard } from './_guards/index';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-    ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         AppBootstrapModule,
         AppRoutes
+    ],
+    declarations: [
+        AppComponent,
+        FullLayoutComponent,
     ],
     providers: [ 
         AppService, 
