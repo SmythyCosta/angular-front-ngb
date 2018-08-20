@@ -14,14 +14,14 @@ import { AppRoutes } from './app.routes';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DirectivasModule } from './_directives/directives.module';
 import { AppComponent } from './app.component';
+import { AlertComponent } from './_directives/alert.component';
+import { LoginComponent } from './login/login.component';
 
 
 // #################### [ Helpers ] ####################
 import { AlertService, AuthenticationService, AppService ,SettingService} from './_services/index';
 import { customHttpProvider } from './_helpers/index';
 import { AuthGuard } from './_guards/index';
-
-
 
 
 @NgModule({
@@ -35,6 +35,8 @@ import { AuthGuard } from './_guards/index';
     declarations: [
         AppComponent,
         FullLayoutComponent,
+        AlertComponent,
+        LoginComponent
     ],
     providers: [ 
         AppService, 
