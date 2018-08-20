@@ -5,10 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
     
     { path: 'login',            redirectTo: '/login', pathMatch: 'full' },
+    { path: '**',               redirectTo: '/login' }
+
+    /**
     { path: 'dashboard',        redirectTo: '/dashboard' },
     { path: 'category',         redirectTo: '/category' },
     { path: 'sub-category',     redirectTo: '/sub-category' },
-    //{ path: '**',               redirectTo: '/dashboard' }
+     */
+    
 
 ];
 
