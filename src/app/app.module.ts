@@ -15,7 +15,10 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { DirectivasModule } from './_directives/directives.module';
 
 
-// #################### [ Components ] ####################
+// #################### [ Helpers ] ####################
+import { AlertService, AuthenticationService, AppService ,SettingService} from './_services/index';
+import { customHttpProvider } from './_helpers/index';
+import { AuthGuard } from './_guards/index';
 
 
 
@@ -34,7 +37,10 @@ import { DirectivasModule } from './_directives/directives.module';
     providers: [ 
         AppService, 
         customHttpProvider, 
-        AuthGuard
+        AuthGuard,
+        AlertService,
+        AuthenticationService,
+        SettingService
     ],
     bootstrap: [AppComponent]
     //exports:[AlertComponent]
