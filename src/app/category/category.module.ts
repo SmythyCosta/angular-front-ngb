@@ -6,6 +6,7 @@ import { CategoryListComponent }    from './category-list/category-list.componen
 import { CategoryFormComponent }    from './category-form/category-form.component';
 import { CategoryRoutes }           from './category-routes';
 import { CategoryService }          from '../_services/category.service';
+import { AuthGuard } from '../_guards/index';
 
 @NgModule({
     imports: [
@@ -15,6 +16,6 @@ import { CategoryService }          from '../_services/category.service';
     ],
     declarations: [CategoryListComponent, CategoryFormComponent],
     exports: [CategoryListComponent, CategoryFormComponent],
-    providers:[CategoryService]
+    providers:[AuthGuard, CategoryService]
 })
 export class CategoryModule { }

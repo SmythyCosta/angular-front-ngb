@@ -21,6 +21,8 @@ import { UserModule } from './user/user.module';
 
 // #################### [ Components ] ####################
 import { AppComponent } from './app.component';
+import { AuthGuard } from './_guards/index';
+
 
 
 @NgModule({
@@ -43,7 +45,7 @@ import { AppComponent } from './app.component';
         DirectivasModule,
         AppRoutes
     ],
-    providers: [],
+    providers: [AuthGuard],
     bootstrap: [AppComponent]
     //exports:[AlertComponent]
 })
