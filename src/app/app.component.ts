@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-//import { Http } from '@angular/http';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
+import { Router } from '@angular/router';
+import { AppService, SettingService } from './_services/';
 
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
-})
+    // tslint:disable-next-line
+    selector: 'body',
+    template: '<router-outlet></router-outlet>'
+  })
 export class AppComponent {
 
     title = 'Dashboard - FrontEnd Angular Ecommerce';
@@ -19,7 +15,7 @@ export class AppComponent {
 
     constructor(http:Http){
 
-        let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
+        //let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
 
         /**
         stream.map(res => res.json())

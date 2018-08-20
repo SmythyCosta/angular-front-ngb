@@ -6,9 +6,9 @@ import { AuthGuard } from '../_guards/index';
 
 
 const categoryRoutes: Routes = [
-    { path: 'category',             component: CategoryListComponent, canActivate: [AuthGuard] },
-    { path: 'category/form',        component: CategoryFormComponent, canActivate: [AuthGuard] },
-    { path: 'category/form/:id',    component: CategoryFormComponent, canActivate: [AuthGuard] }
+    { path: 'category',             component: CategoryListComponent },
+    { path: 'category/form',        component: CategoryFormComponent  },
+    { path: 'category/form/:id',    component: CategoryFormComponent }
 ];
 
 
