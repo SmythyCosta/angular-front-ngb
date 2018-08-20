@@ -8,20 +8,15 @@ import { HttpModule } from '@angular/http';
 // #################### [ Modules ] ####################
 import { AppBootstrapModule } from './_app-bootstrap/app-bootstrap.module';
 import { AppRoutes } from './app.routes';
+
+
+// #################### [ Layouts ] ####################
 import { DashboardModule } from './dashboard/dashboard.module';
-import { CategoryModule } from './category/category.module';
-import { SubCategoryModule } from './sub-category/sub-category.module';
-import { ProductModule } from './product/product.module';
-import { LoginModule } from './login/login.module';
-import { SettingModule } from './setting/setting.module';
 import { DirectivasModule } from './_directives/directives.module';
-import { UserModule } from './user/user.module';
-//import { NgbModule }               from '@ng-bootstrap/ng-bootstrap';
 
 
 // #################### [ Components ] ####################
-import { AppComponent } from './app.component';
-import { AuthGuard } from './_guards/index';
+
 
 
 
@@ -34,18 +29,13 @@ import { AuthGuard } from './_guards/index';
         FormsModule,
         HttpModule,
         AppBootstrapModule,
-        //NgbModule.forRoot(),
-        CategoryModule,
-        DashboardModule,
-        SubCategoryModule,
-        ProductModule,
-        SettingModule,
-        UserModule,
-        LoginModule,
-        DirectivasModule,
         AppRoutes
     ],
-    providers: [AuthGuard],
+    providers: [ 
+        AppService, 
+        customHttpProvider, 
+        AuthGuard
+    ],
     bootstrap: [AppComponent]
     //exports:[AlertComponent]
 })
