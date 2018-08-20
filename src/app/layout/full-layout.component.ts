@@ -7,7 +7,8 @@ import { AppService } from '../_services/index';
     templateUrl: './full-layout.component.html'
 })
 export class FullLayoutComponent implements OnInit {
-    
+
+    //
     userData = {
         profileName: '',
         image: ''
@@ -66,5 +67,5 @@ export class FullLayoutComponent implements OnInit {
         localStorage.removeItem('currentUser');
         this.router.navigate(['/login']);
     }
-    
+
 }
