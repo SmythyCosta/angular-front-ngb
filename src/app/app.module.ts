@@ -11,9 +11,9 @@ import { AppRoutes } from './app.routes';
 
 
 // #################### [ Layouts ] ####################
-import { DashboardModule } from './dashboard/dashboard.module';
-import { DirectivasModule } from './_directives/directives.module';
 import { AppComponent } from './app.component';
+import { FullLayoutComponent } from './layout/full-layout.component';
+import { DirectivasModule } from './_directives/directives.module';
 import { AlertComponent } from './_directives/alert.component';
 import { LoginComponent } from './login/login.component';
 
