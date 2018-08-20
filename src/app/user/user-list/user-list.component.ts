@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 //
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../_services/user.service';
-import { AlertService } from '../../_services/alert.services';
+import { AlertService } from '../../_services/alert.service';
 import { AppService } from '../../_services/app.service';
 
 class User {

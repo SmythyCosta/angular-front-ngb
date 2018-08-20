@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Rx';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { SettingService } from '../../_services/setting.service';
-import { AlertService } from '../../_services/alert.services';
+import { AlertService } from '../../_services/alert.service';
 
 @Component({
     selector: 'app-setting-form',

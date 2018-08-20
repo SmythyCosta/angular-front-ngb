@@ -7,7 +7,7 @@ import { subCategoryInterface } from '../_interfaces/sub-category.interface';
 import $ from 'jquery/dist/jquery';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { AlertService }               from '../_services/alert.services';
+import { AlertService }               from '../_services/alert.service';
 
 
 @Component({

@@ -7,7 +7,7 @@ import { LoginRoutes } from './login.routes';
 import { LoginComponent } from './login.component';
 import { AuthenticationService } from '../_services/authentication.service';
 import { SettingService } from '../_services/setting.service';
-import { AlertService } from '../_services/alert.services';
+import { AlertService } from '../_services/alert.service';
 
 @NgModule({
     imports: [

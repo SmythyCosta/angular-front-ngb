@@ -7,7 +7,7 @@ import { SubCategoryFormComponent }     from './sub-category-form.component';
 import { SubCategoryService }           from '../_services/sub-category.service';
 import { SubCategoryRoutes }            from './sub-category.routes';
 import { DataTablesModule }             from 'angular-datatables';
-import { AlertService }                 from '../_services/alert.services';
+import { AlertService }                 from '../_services/alert.service';
 import { DirectivasModule } from '../_directives/directives.module';
 //import { AlertComponent }               from '../_directives/alert.component';
 

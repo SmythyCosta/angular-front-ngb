@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Http } from "@angular/http";
 import { AuthenticationService } from "../_services/authentication.service";
 import { SettingService } from "../_services/setting.service";
-import { AlertService } from "../_services/alert.services";
+import { AlertService } from "../_services/alert.service";
 
 @Component({
     selector: 'app-login',

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { switchMap }            from 'rxjs/operators';
 import { Http }                 from '@angular/http';
 import { SubCategoryService }   from '../_services/sub-category.service';
-import { AlertService } from '../_services/alert.services';
+import { AlertService } from '../_services/alert.service';
 
 @Component({
     selector: 'app-sub-category-form',
