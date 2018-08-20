@@ -1,55 +1,61 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService, SettingService } from './_services/';
+import { AppService, SettingService } from './_services/index';
 
 
 @Component({
     // tslint:disable-next-line
     selector: 'body',
     template: '<router-outlet></router-outlet>'
-  })
+})
 export class AppComponent {
 
-    title = 'Dashboard - FrontEnd Angular Ecommerce';
-    categoryList:Object[] = [];
+    getToken: string;
+    title = 'app';
 
-    constructor(http:Http){
+    getSetting = {
+        id: '',
+        company_name: '',
+        address: '',
+        phone: '',
+        email: '',
+        currency: '',
+        vat_percentage: '',
+        discount_percentage: '',
+        image: ''
+    };
 
-        //let stream = http.get('http://127.0.0.1:8000/api/get-all-category-by-grid');
+    setting = {};
 
-        /**
-        stream.map(res => res.json())
-        .subscribe(categoryList => {
-            this.categoryList = categoryList;
-            console.log(this.categoryList);
-        }, error => console.log(error));
-         */
-        
+    constructor(private dataService: AppService,
+                private setingService: SettingService,
+                public router: Router
+            ) { }
 
-        /** 
-        stream.subscribe(res => {
-            this.categoryList = res.json();
-            console.log(this.categoryList);
-        });
-        */
-        
+    ngOnInit() {
+        this.settingData();
+    }
 
+    settingData() {
+        // localStorage.removeItem('setting');
+        this.setingService.getSettingData()
+            .subscribe(data => {
+                this.getSetting = data.setting;
+                this.setting = {
+                    id: this.getSetting.id,
+                    company_name: this.getSetting.company_name,
+                    address: this.getSetting.address,
+                    phone: this.getSetting.phone,
+                    email: this.getSetting.email,
+                    currency: this.getSetting.currency,
+                    vat_percentage: this.getSetting.vat_percentage,
+                    discount_percentage: this.getSetting.discount_percentage,
+                    image: this.getSetting.image
+                }
 
-
-        /** 
-        stream.map((response: Response) => console.log(response.json()));
-        */
-
-        /** 
-        allCategory(){
-            this.dataService.getAllCategory()
-                  .subscribe(data => { 
-                                this.categoryList = data.cat; 
-                            });
-          }
-        */
-        
-
+                localStorage.setItem('setting', JSON.stringify(this.setting));
+                let settingData = JSON.parse(localStorage.getItem('setting'));
+            });
     }
 
 }
