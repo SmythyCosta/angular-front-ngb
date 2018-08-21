@@ -6,8 +6,6 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class AuthenticationService{
     
-    private pathApi: String = 'http://localhost:8000';
-
     constructor(private http: Http) { }
 
     /**
@@ -17,7 +15,7 @@ export class AuthenticationService{
      * Desc: salva o o token no localStorage.
      */
     login(data) {
-        return this.http.post(this.pathApi+'/api/user-login', data)
+        return this.http.post('/api/user-login', data)
             .map((response: Response) => {
                 
                 // login successful if there's a jwt token in the response
