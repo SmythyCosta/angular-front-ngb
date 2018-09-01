@@ -1,0 +1,115 @@
+<div class="content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align: center"> Product </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            Ecommerce
+                        </li>
+                        <li class="breadcrumb-item">
+                            Product
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Add</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-danger" routerLink="/product">List</button>
+                <button type="button" class="btn btn-primary" routerLink="/product/form">Add</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+
+                <form method="post" enctype="multipart/form-data" [formGroup]="productAddForm">
+
+                    <div class="form-group">
+                        <label for="serial_number">Serial Code</label>
+                        <input type="text" name="serial_number" id="serial_number" class="form-control" formControlName="serial_number" [(ngModel)]="product.serial_number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" formControlName="name" required [(ngModel)]="product.name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" class="form-control" formControlName="category" required [(ngModel)]="product.category" (ngModelChange)="selectCat($event)">
+                            <option value="" selected disabled>Please Select</option>
+                            <option *ngFor="let item of cat" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+
+                    <!-- 
+                    <div class="form-group" *ngIf="product.category !=''">-->
+
+                    <div class="form-group">
+                        <label for="subCategory">Sub Category</label>
+                        <select id="subCategory" class="form-control" formControlName="subCategory" required [(ngModel)]="product.subCategory">
+                            <option value="" selected>Please Select</option>
+                            <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+
+                    <!-- 
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="purchase_price">Purchase price</label>
+                        <input type="text" id="purchase_price" class="form-control" formControlName="purchase_price" required [(ngModel)]="product.purchase_price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selling_price">Selling price</label>
+                        <input type="text" id="selling_price" class="form-control" formControlName="selling_price" required [(ngModel)]="product.selling_price">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <textarea id="note" class="form-control" rows="3" formControlName="note" required [(ngModel)]="product.note"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" class="form-control" formControlName="status" required [(ngModel)]="product.status">
+                            <option value="1">Active</option>
+                            <option value="0">Deactive</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file">Image</label>
+                    
+                        <div *ngIf="product.id">
+                            <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image" />
+                        </div>
+                        <input type="file" class="form-control-file" accept="{{fileType}}" (change)="fileChange($event)" [attr.multiple]="allowMultiple">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" [disabled]="!productAddForm.valid" (click)="save(this.product)">Save</button>
+
+                </form>
+
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+    </div>
+</div>
