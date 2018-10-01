@@ -22,10 +22,10 @@ export const appRoutes: Routes = [
         children:[
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard] },
             { path: 'category', loadChildren: './category/category.module#CategoryModule', canActivate: [AuthGuard] },
-            { path: 'subcategory', loadChildren: './sub-category/sub-category.module#SubCategoryModule', canActivate: [AuthGuard] },
-            { path: 'product', loadChildren: './product/product.module#ProductModule', canActivate: [AuthGuard] },
-            { path: 'user', loadChildren: './user/user.module#UserModule', canActivate: [AuthGuard] },
-            { path: 'setting', loadChildren: './setting/setting.module#SettingModule', canActivate: [AuthGuard] },
+            //{ path: 'subcategory', loadChildren: './sub-category/sub-category.module#SubCategoryModule', canActivate: [AuthGuard] },
+            //{ path: 'product', loadChildren: './product/product.module#ProductModule', canActivate: [AuthGuard] },
+            //{ path: 'user', loadChildren: './user/user.module#UserModule', canActivate: [AuthGuard] },
+            //{ path: 'setting', loadChildren: './setting/setting.module#SettingModule', canActivate: [AuthGuard] },
         ]
     },
     {

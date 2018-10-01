@@ -6,9 +6,9 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 
 
 const categoryRoutes: Routes = [
-    { path: 'category', component: CategoryListComponent, data: {title: 'Category List'} },
-    { path: 'category/form', component: CategoryFormComponent, data: {title: 'Category Manage'} },
-    { path: 'category/form/:id', component: CategoryFormComponent, data: {title: 'Category Manage'} }
+    { path: '', component: CategoryListComponent, data: {title: 'Category List'} },
+    { path: 'form', component: CategoryFormComponent, data: {title: 'Category Manage'} },
+    { path: 'form/:id', component: CategoryFormComponent, data: {title: 'Category Manage'} }
 ];
 
 
