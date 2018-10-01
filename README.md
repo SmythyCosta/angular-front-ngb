@@ -90,3 +90,8 @@ https://stackoverflow.com/questions/43598311/component-is-part-of-the-declaratio
         
     ** Angular
         ng serve --port 9090 
+
+
+## login dados
+    Username: admin@gmail.com
+    Password: 12345
