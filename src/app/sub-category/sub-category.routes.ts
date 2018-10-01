@@ -5,9 +5,9 @@ import { SubCategoryFormComponent } from './sub-category-form.component';
 
 
 const subCategoryRoutes: Routes = [
-    { path: 'sub-category',             component: SubCategoryComponent },
-    { path: 'sub-category/form',        component: SubCategoryFormComponent },
-    { path: 'sub-category/form/:id',    component: SubCategoryFormComponent }
+    { path: '', component: SubCategoryComponent, data: {title: 'SubCategory List'} },
+    { path: 'form', component: SubCategoryFormComponent, data: {title: 'SubCategory Manage'} },
+    { path: 'form/:id', component: SubCategoryFormComponent, data: {title: 'SubCategory Manage'} }
 ];
 
 
