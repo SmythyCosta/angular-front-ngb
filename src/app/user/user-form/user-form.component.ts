@@ -147,7 +147,7 @@ export class UserFormComponent implements OnInit {
             });
     }
 
-    edit(id,content){
+    edit(id){
         this.dataService.getUser(id)
             .pipe().subscribe(data => { this.getUser = data['user']; 
                   this.user = {
