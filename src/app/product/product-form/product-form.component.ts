@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Rx';
+import { AlertService } from '../../_services';
 
 
 
@@ -47,7 +48,8 @@ export class ProductFormComponent implements OnInit {
         public router: Router,
         private routeParams: ActivatedRoute,
         private http: Http,
-        private dataService: ProductService
+        private dataService: ProductService,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
@@ -151,7 +153,7 @@ export class ProductFormComponent implements OnInit {
             this.dataService.save(formData)
                 .subscribe(data => {
                     this.product = {};
-                    alert('Product Create successful');
+                    this.alertService.success('Product Create successful', true);
                 }, error => {
                     alert(error);
                 });
@@ -159,8 +161,8 @@ export class ProductFormComponent implements OnInit {
             formData.append('id', val.id);
             this.dataService.productUpdate(formData)
                 .subscribe(data => {
-                    alert('Product Update successful');
-                    this.router.navigate(['/product']);
+                    this.alertService.success('Product Update successful', true);
+                    //this.router.navigate(['/product']);
                 }, error => {
                     alert(error);
                 });

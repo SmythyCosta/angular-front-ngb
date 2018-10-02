@@ -26,6 +26,12 @@
 
         <div class="row">
             <div class="col-md-12">
+                <alert></alert>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <button type="button" class="btn btn-danger" routerLink="/product">List</button>
                 <button type="button" class="btn btn-primary" routerLink="/product/form">Add</button>
             </div>
@@ -95,9 +101,10 @@
 
                     <div class="form-group">
                         <label for="file">Image</label>
-                    
+
                         <div *ngIf="product.id">
-                            <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image" />
+                            <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="product.image !=''" [src]="'data:image/jpg;base64,'+product.image"
+                            />
                         </div>
                         <input type="file" class="form-control-file" accept="{{fileType}}" (change)="fileChange($event)" [attr.multiple]="allowMultiple">
                     </div>
