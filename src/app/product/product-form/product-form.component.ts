@@ -56,7 +56,7 @@ export class ProductFormComponent implements OnInit {
 
         /**
          * Check id
-         * Verifica qual o valor do id
+         * Verifica qual o valor do id na URL
          */
         this.routeParams.params.forEach((params: Params) => {
             let id: number = +params['id'];
@@ -64,7 +64,6 @@ export class ProductFormComponent implements OnInit {
                 this.edit(id);
             }
         });
-
 
         /**
          * FormGroup = productAddForm

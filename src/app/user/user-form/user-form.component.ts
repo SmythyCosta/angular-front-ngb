@@ -24,8 +24,8 @@ export class UserFormComponent implements OnInit {
     @Input() required: boolean;
     @Input() maxSizeInKb: number;
     @Output() onSelection = new EventEmitter<FileList>(); DisplayedText: string = "";
+    
     fileList: any;
-
     userList: User[] = []; // Table Data list
     userAddForm: FormGroup;
 
@@ -53,8 +53,6 @@ export class UserFormComponent implements OnInit {
         image: ''
     };
 
-
-
     constructor(
         public router: Router,
         private dataService: UserService,
@@ -64,7 +62,13 @@ export class UserFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        // form validaion
+        
+        /**
+         * FormGroup = productAddForm
+         * https://angular.io/guide/reactive-forms
+         * 7 - inputs
+         * 1 - upload de arquivo
+         */
         this.userAddForm = new FormGroup({
             name: new FormControl("", Validators.compose([Validators.required])),
             email: new FormControl("", Validators.compose([Validators.required])),
