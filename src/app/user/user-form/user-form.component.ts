@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
+import { Http } from '@angular/http';
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AlertService, UserService, AppService } from '../../_services/index';
@@ -87,7 +88,7 @@ export class UserFormComponent implements OnInit {
             phone: new FormControl("", Validators.compose([Validators.required])),
             address: new FormControl(""),
             password: new FormControl(""),
-            type: new FormControl("", Validators.compose([Validators.required])),
+            type: new FormControl(""),
             status: new FormControl(""),
         });
 

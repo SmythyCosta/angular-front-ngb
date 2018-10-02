@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2 style="text-align: center"> {{titlePage}} </h2>
+                <h2 style="text-align: center"> User </h2>
             </div>
         </div>
 
@@ -22,6 +22,12 @@
                 </nav>
             </div>
             <div class="col-md-8"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <alert></alert>
+            </div>
         </div>
 
         <div class="row">
@@ -119,8 +125,8 @@
 
                         <div class="form-group row">
                             <div class="col-7">
-                                    <button type="button" class="btn btn-secondary" aria-label="Close" (click)="d('Cross click')">Close</button>
-                                    <button type="submit" class="btn btn-outline-primary" [disabled]="!userAddForm.valid" (click) ="save(this.user)">Save</button>
+                                <button type="button" class="btn btn-secondary" aria-label="Close" (click)="d('Cross click')">Close</button>
+                                <button type="submit" class="btn btn-outline-primary" [disabled]="!userAddForm.valid" (click)="save(this.user)">Save</button>
                             </div>
                         </div>
 
