@@ -147,6 +147,21 @@ export class UserFormComponent implements OnInit {
             });
     }
 
-
+    edit(id,content){
+        this.dataService.getUser(id)
+            .pipe().subscribe(data => { this.getUser = data['user']; 
+                  this.user = {
+                        id:this.getUser.id,
+                        name:this.getUser.name,
+                        email:this.getUser.email,
+                        phone:this.getUser.phone,
+                        address:this.getUser.address,
+                        password:'',
+                        type:this.getUser.type,
+                        status:this.getUser.status,
+                        image:this.getUser.image
+                  };
+            });
+      }
 
 }
