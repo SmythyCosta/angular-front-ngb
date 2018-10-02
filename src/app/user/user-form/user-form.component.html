@@ -26,37 +26,105 @@
 
         <div class="row">
             <div class="col-md-12">
-                <button type="button" class="btn btn-danger" routerLink="/category">List</button>
-                <button type="button" class="btn btn-primary" routerLink="/category/form">Add</button>
+                <button type="button" class="btn btn-danger" routerLink="/user">List</button>
+                <button type="button" class="btn btn-primary" routerLink="/user/form">Add</button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" class="form-horizontal" [formGroup]="userAddForm">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label for="name" class="col-5 col-form-label">Name
+                                <span>*</span>
+                            </label>
+                            <div class="col-7">
+                                <input class="form-control" type="text" id="name" name="name" formControlName="name" [(ngModel)]="user.name">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" name="category" id="category" class="form-control" placeholder="Enter category name"
-                            required [(ngModel)]="cat.category">
+                        <div class="form-group row">
+                            <label for="email" class="col-5 col-form-label">Email
+                                <span>*</span>
+                            </label>
+                            <div class="col-7">
+                                <input class="form-control" type="email" id="email" name="email" formControlName="email" [(ngModel)]="user.email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-5 col-form-label">Phone
+                                <span>*</span>
+                            </label>
+                            <div class="col-7">
+                                <input class="form-control" type="text" id="phone" name="phone" formControlName="phone" [(ngModel)]="user.phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-5 col-form-label">Password</label>
+                            <div class="col-7">
+                                <input class="form-control" type="password" id="password" name="password" formControlName="password" [(ngModel)]="user.password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address" class="col-5 col-form-label">Address</label>
+                            <div class="col-7">
+                                <textarea class="form-control" type="text" id="address" name="address" formControlName="address" [(ngModel)]="user.address"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="type" class="col-5 col-form-label">Type
+                                <span>*</span>
+                            </label>
+                            <div class="col-7">
+                                <select class="form-control" id="type" name="type" formControlName="type" [(ngModel)]="user.type">
+                                    <option value="" selected disabled>Please Select</option>
+                                    <option *ngFor="let item of userType" value="{{item.id}}">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="status" class="col-5 col-form-label">Status</label>
+                            <div class="col-7">
+                                <select class="form-control" id="status" name="status" formControlName="status" [(ngModel)]="user.status">
+                                    <option value="0" selected>Inactive</option>
+                                    <option value="1">Active</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-5 form-control-label">image</label>
+                            <div class="col-md-7">
+                                <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="user.image !=''" [src]="'data:image/jpg;base64,'+user.image"
+                                />
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <label class="btn btn-primary">
+                                            <samp>Browse</samp>...
+                                            <input type="file" accept="{{fileType}}" style="display: none;" (change)="fileChange($event)" [attr.multiple]="allowMultiple">
+                                        </label>
+                                    </span>
+                                    <input type="text" class="form-control" [value]="DisplayedText" disabled="" [class.ng-invalid-right]="required && !DisplayedText"
+                                        [class.ng-valid-right]="required && DisplayedText" style="height: 35px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-7">
+                                    <button type="button" class="btn btn-secondary" aria-label="Close" (click)="d('Cross click')">Close</button>
+                                    <button type="submit" class="btn btn-outline-primary" [disabled]="!userAddForm.valid" (click) ="save(this.user)">Save</button>
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="3" required [(ngModel)]="cat.description"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control" required [(ngModel)]="cat.status">
-                            <option value="1">Active</option>
-                            <option value="0">Deactive</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" (click)="save(this.cat)"> Submit </button>
-
                 </form>
             </div>
             <div class="col-md-2"></div>

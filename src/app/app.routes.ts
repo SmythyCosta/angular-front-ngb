@@ -5,9 +5,7 @@ import { FullLayoutComponent } from './layout/full-layout.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/index';
 
-
 export const appRoutes: Routes = [
-
     {   
         path: '',
         redirectTo: 'dashboard',
@@ -35,7 +33,6 @@ export const appRoutes: Routes = [
             title: 'login'
         }
     }
-    
 ];
 
 @NgModule({
