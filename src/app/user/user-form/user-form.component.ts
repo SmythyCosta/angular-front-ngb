@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AlertService, UserService, AppService } from '../../_services/index';
@@ -55,6 +55,7 @@ export class UserFormComponent implements OnInit {
 
     constructor(
         public router: Router,
+        private routeParams: ActivatedRoute,
         private dataService: UserService,
         private alertService: AlertService,
         private AppService: AppService,
