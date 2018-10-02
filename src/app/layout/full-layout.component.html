@@ -1,12 +1,21 @@
 <nav class="navbar navbar-default" id="nav-menu-app">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">
-                <!-- 
-                <img width="30" [src]="'data:image/jpg;base64,'+setting.image">
-                -->
-            </a>
-            <span class="navbar-brand">Angular 5 + Bootstrap 4</span>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <a class="navbar-brand">
+                        <!-- 
+                        <img width="30" [src]="'data:image/jpg;base64,'+setting.image">
+                        -->
+                    </a>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <span class="navbar-brand">Angular 5 + Bootstrap 4</span>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <a class="btn btn-outline-primary" id="btn-logout" (click)="logout()">Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
@@ -16,9 +25,8 @@
     <a class="item-btn-menu" routerLink="/category"> Category </a>
     <a class="item-btn-menu" routerLink="/sub-category"> Sub Category </a>
     <a class="item-btn-menu" routerLink="/product"> Product </a>
-    <a class="item-btn-menu" routerLink="/setting"> Settings </a>
-    <a class="item-btn-menu" routerLink="/login"> Login </a>
     <a class="item-btn-menu" routerLink="/user"> User </a>
+    <a class="item-btn-menu" routerLink="/setting"> Settings </a>
 </nav>
 
 <main class="main">

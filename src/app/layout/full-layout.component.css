@@ -44,3 +44,9 @@ footer{
     color: #fff; 
     padding-top: 40px;
 }
+
+@media (min-width: 900px) {
+    #btn-logout {
+        margin-left: 400px;
+    }
+}
