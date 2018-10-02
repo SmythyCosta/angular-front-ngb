@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="background-color: cadetblue;">
+<nav class="navbar navbar-default" id="nav-menu-app">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand">
@@ -11,28 +11,22 @@
     </div>
 </nav>
 
-
-<nav>
-    <a routerLink="/dashboard"> Dashboard </a>
-    <a routerLink="/category"> Category </a>
-    <a routerLink="/sub-category"> Sub Category </a>
-    <a routerLink="/product"> Product </a>
-    <a routerLink="/setting"> Settings </a>
-    <a routerLink="/login"> Login </a>
-    <a routerLink="/user"> User </a>
+<nav id="lista-itens-menu">
+    <a class="item-btn-menu" routerLink="/dashboard"> Dashboard </a>
+    <a class="item-btn-menu" routerLink="/category"> Category </a>
+    <a class="item-btn-menu" routerLink="/sub-category"> Sub Category </a>
+    <a class="item-btn-menu" routerLink="/product"> Product </a>
+    <a class="item-btn-menu" routerLink="/setting"> Settings </a>
+    <a class="item-btn-menu" routerLink="/login"> Login </a>
+    <a class="item-btn-menu" routerLink="/user"> User </a>
 </nav>
-
 
 <main class="main">
     <div class="container-fluid">
-        <!-- 
-            <alert></alert>
-        -->
         <router-outlet></router-outlet>
     </div>
 </main>
 
-
-<footer class="app-footer" style="background-color: cadetblue; min-height: 100px; color: #fff; padding-top: 40px;">
+<footer class="app-footer">
     <p style="text-align: center;"> By - @Smythy Costa. </p>
 </footer>
