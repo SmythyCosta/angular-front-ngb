@@ -62,6 +62,17 @@ export class UserFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
+        /**
+         * Check id
+         * Verifica qual o valor do id na URL
+         */
+        this.routeParams.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+            if (id) {
+                this.edit(id);
+            }
+        });
         
         /**
          * FormGroup = productAddForm
@@ -78,6 +89,7 @@ export class UserFormComponent implements OnInit {
             type: new FormControl("", Validators.compose([Validators.required])),
             status: new FormControl(""),
         });
+
     }
 
     save(val) {
