@@ -27,7 +27,6 @@ export class UserFormComponent implements OnInit {
     @Output() onSelection = new EventEmitter<FileList>(); DisplayedText: string = "";
     
     fileList: any;
-    userList: User[] = []; // Table Data list
     userAddForm: FormGroup;
 
     getUser = {
@@ -117,7 +116,6 @@ export class UserFormComponent implements OnInit {
             this.dataService.save(formData)
                 .pipe().subscribe(data => {
                     if (data['status'] == 200) {
-                        this.allUser();
                         this.alertService.success('User Create successful', true);
                     } else if (data['status'] == 300) {
                         this.alertService.success('User already exists', true);
@@ -130,7 +128,6 @@ export class UserFormComponent implements OnInit {
             this.dataService.userUpdate(formData)
                 .pipe().subscribe(data => {
                     if (data['status'] == 200) {
-                        this.allUser();
                         this.alertService.success('User Update successful', true);
                     } else if (data['status'] == 300) {
                         this.alertService.error('User already exists', true);
@@ -139,13 +136,6 @@ export class UserFormComponent implements OnInit {
                     this.alertService.error(error);
                 });
         }
-    }
-
-    allUser() {
-        this.dataService.getAlluser()
-            .pipe().subscribe(data => {
-                this.userList = data['user'];
-            });
     }
 
     edit(id){
