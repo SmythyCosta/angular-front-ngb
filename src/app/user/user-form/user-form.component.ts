@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService, AlertService, AppService } from '../../_services';
+import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-
+import { AlertService, UserService, AppService } from '../../_services/index';
 
 class User {
     id: number;
@@ -19,8 +19,40 @@ class User {
     templateUrl: './user-form.component.html',
 })
 export class UserFormComponent implements OnInit {
+    @Input() allowMultiple: boolean;
+    @Input() fileType: string;
+    @Input() required: boolean;
+    @Input() maxSizeInKb: number;
+    @Output() onSelection = new EventEmitter<FileList>(); DisplayedText: string = "";
+    fileList: any;
 
-    userAddForm :FormGroup;
+    userList: User[] = []; // Table Data list
+    userAddForm: FormGroup;
+
+    getUser = {
+        id: '',
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        password: '',
+        type: '',
+        status: '',
+        image: ''
+    };
+
+    user = {
+        id: '',
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        password: '',
+        type: '',
+        status: '',
+        image: ''
+    };
+
 
 
     constructor(
@@ -32,7 +64,6 @@ export class UserFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
         // form validaion
         this.userAddForm = new FormGroup({
             name: new FormControl("", Validators.compose([Validators.required])),
@@ -43,12 +74,61 @@ export class UserFormComponent implements OnInit {
             type: new FormControl("", Validators.compose([Validators.required])),
             status: new FormControl(""),
         });
-
-
     }
 
+    save(val) {
+        this.insertAction(val);
+    }
 
+    insertAction(val) {
 
+        let formData: FormData = new FormData();
+        if (this.fileList != undefined) {
+            let file: File = this.fileList[0];
+            formData.append('file', file, file.name);
+        }
+        formData.append('name', this.user.name);
+        formData.append('email', this.user.email);
+        formData.append('phone', this.user.phone);
+        formData.append('address', this.user.address);
+        formData.append('password', this.user.password);
+        formData.append('type', this.user.type);
+        formData.append('status', this.user.status);
+
+        if (val.id == undefined || val.id == '') {
+            this.dataService.save(formData)
+                .pipe().subscribe(data => {
+                    if (data['status'] == 200) {
+                        this.allUser();
+                        this.alertService.success('User Create successful', true);
+                    } else if (data['status'] == 300) {
+                        this.alertService.success('User already exists', true);
+                    }
+                }, error => {
+                    this.alertService.error(error);
+                });
+        } else {
+            formData.append('id', val.id);
+            this.dataService.userUpdate(formData)
+                .pipe().subscribe(data => {
+                    if (data['status'] == 200) {
+                        this.allUser();
+                        this.alertService.success('User Update successful', true);
+                    } else if (data['status'] == 300) {
+                        this.alertService.error('User already exists', true);
+                    }
+                }, error => {
+                    this.alertService.error(error);
+                });
+        }
+    }
+
+    allUser() {
+        this.dataService.getAlluser()
+            .pipe().subscribe(data => {
+                this.userList = data['user'];
+            });
+    }
 
 
 
