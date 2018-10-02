@@ -22,8 +22,9 @@ export const appRoutes: Routes = [
             { path: 'category', loadChildren: './category/category.module#CategoryModule', canActivate: [AuthGuard] },
             { path: 'sub-category', loadChildren: './sub-category/sub-category.module#SubCategoryModule', canActivate: [AuthGuard] },
             { path: 'product', loadChildren: './product/product.module#ProductModule', canActivate: [AuthGuard] },
-            { path: 'user', loadChildren: './user/user.module#UserModule', canActivate: [AuthGuard] },
+            { path: 'user', loadChildren: './user/user.module#UserModule', canActivate: [AuthGuard] }, 
             { path: 'setting', loadChildren: './setting/setting.module#SettingModule', canActivate: [AuthGuard] },
+            { path: 'sales', loadChildren: './sales/sales.module#SalesModule', canActivate: [AuthGuard] },
         ]
     },
     {
