@@ -4,18 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-
 // #################### [ Modules ] ####################
 import { AppBootstrapModule } from './_app-bootstrap/app-bootstrap.module';
 import { AppRoutes } from './app.routes';
-
+import { DirectivasModule } from './_directives/directives.module'
 
 // #################### [ Layouts ] ####################
 import { AppComponent } from './app.component';
 import { FullLayoutComponent } from './layout/full-layout.component';
 import { AlertComponent } from './_directives/index';
 import { LoginComponent } from './login/login.component';
-
 
 // #################### [ Helpers ] ####################
 import { AlertService, AuthenticationService, AppService ,SettingService} from './_services/index';
@@ -29,12 +27,12 @@ import { AuthGuard } from './_guards/index';
         FormsModule,
         HttpModule,
         AppBootstrapModule,
+        DirectivasModule,
         AppRoutes
     ],
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        AlertComponent,
         LoginComponent
     ],
     providers: [ 
@@ -46,7 +44,6 @@ import { AuthGuard } from './_guards/index';
         SettingService
     ],
     exports: [
-        AlertComponent
     ],
     bootstrap: [AppComponent]
 })
