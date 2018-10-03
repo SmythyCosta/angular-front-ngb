@@ -41,8 +41,8 @@ export class SubCategoryComponent implements OnInit {
     }
 
     /**
-     * @param template 
      * Modal Bootstrap
+     * @param template 
     */
     public openModal(template: TemplateRef<any>, info, id) {
         this.modalRef = this.modalService.show(template); //
@@ -51,9 +51,9 @@ export class SubCategoryComponent implements OnInit {
     }
 
     /**
-     * @returns
-     * All Entity
-    */
+     * Carrega todos dados de Entity
+     * @returns Objto Json
+     */
     allSubCategory() {
         this.dataService.getAllSubCategory()
             .subscribe(data => {
@@ -64,8 +64,8 @@ export class SubCategoryComponent implements OnInit {
     }
 
     /**
-     * Delete Entity
-     * @param obj 
+     * Deleta Entity
+     * @param obj{id, name}
     */
     delete(id) {
         this.dataService.subCategoryDelete(id)

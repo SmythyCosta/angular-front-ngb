@@ -46,7 +46,7 @@
                         <label for="category">Category</label>
                         <select name="category" id="category" class="form-control" required [(ngModel)]="subCat.category">
                             <option value=""> Please Select </option>
-                            <option *ngFor="let item of allcategory" value="{{item.id}}">{{item.name}}</option>
+                            <option *ngFor="let c of allCategory" value="{{c.id}}">{{c.name}}</option>
                         </select>
                     </div>
 

@@ -10,19 +10,19 @@ import { SubCategoryService, AlertService }   from '../../_services/index';
     styleUrls: ['./sub-category-form.component.css']
 })
 export class SubCategoryFormComponent implements OnInit {
-        
-    subCat = {};
     
+    public titlePage:String = "Sub Category";
+    public titleBarNavegation:String = "Add";
+    
+    subCat = {};
     getSubCat = {
         id:'',
         category_id: '',
         name: '',
         description: '',
         status: ''
-      };
-
-      allcategory:Object[] = [];
-    
+    };
+    allCategory:Object[] = [];
 
     constructor(
         public  router: Router,
@@ -33,20 +33,14 @@ export class SubCategoryFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
-        this.dataService.getCategory()
-          .subscribe(data => { 
-    			  this.allcategory = data.cat;
-          });
-
-        this.routeParams.params.forEach((params: Params) => {
-            let id: number = +params['id'];
-            if (id) {
-                this.edit(id);
-            }
-        });
+        this.callSelectCategory();
+        this.checkIssetID();
     }
 
+    /**
+     * Salva ou atualiza dados
+     * @param val 
+    */
     save(val){
         if(val.id==undefined){
 		    this.dataService.save(this.subCat)
@@ -55,6 +49,7 @@ export class SubCategoryFormComponent implements OnInit {
                     this.subCat = {};
                 },error => {
                     this.alertService.error(error);
+                    //this.alertService.error('Erro na aplicação');
                 });
         }else{
 		    this.dataService.subCategoryUpdate(this.subCat)
@@ -66,6 +61,12 @@ export class SubCategoryFormComponent implements OnInit {
         }
     }
     
+    /**
+     * buscar os dados que deverão
+     * ser editados
+     * @param id 
+     * @returns Object this.cat
+     */
     edit(id){
         this.dataService.getSubCategory(id)
             .subscribe(data => { this.getSubCat = data.subCat; 
@@ -78,6 +79,32 @@ export class SubCategoryFormComponent implements OnInit {
                 };
             });
     }
-    
+
+    /**
+     * Verifica se existe ID
+     * na rota.
+     * sim => edit
+     * nao => new
+    */
+    checkIssetID(){
+        this.routeParams.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+            if (id) {
+                this.titleBarNavegation = "Edit";
+                this.edit(id);
+            }
+        });
+    }
+
+    /**
+     *  Chamar a API do Select
+     *  @returns categorias
+     */
+    callSelectCategory(){
+        this.dataService.getCategory()
+        .subscribe(data => { 
+                this.allCategory = data.cat;
+        });
+    }
 
 }
