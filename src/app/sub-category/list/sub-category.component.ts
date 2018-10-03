@@ -2,13 +2,10 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Rx';
-import { SubCategoryService } from '../_services/sub-category.service';
-import { subCategoryInterface } from '../_interfaces/sub-category.interface';
+import { SubCategoryService, AlertService } from '../../_services/index';
+import { subCategoryInterface } from '../../_interfaces/sub-category.interface';
 import $ from 'jquery/dist/jquery';
-
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { AlertService }               from '../_services/alert.service';
-
 
 @Component({
     selector: 'app-sub-category',
