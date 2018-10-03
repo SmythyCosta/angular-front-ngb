@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 
 import { UserService } from '../../_services/user.service';
 import { AlertService } from '../../_services';
+import { UserInterface } from '../../_interfaces/user.interface';
 
 @Component({
     selector: 'app-user-list',
@@ -14,18 +15,21 @@ export class UserListComponent implements OnInit {
 
     public titlePage: String = "User";
     public countJson: number;
-    userList: User[] = [];
+    userList: UserInterface[] = [];
 
-    constructor(
-        public router: Router,
-        private dataService: UserService,
-        private alertService: AlertService
-    ) { }
+    constructor(public router: Router,
+                private dataService: UserService,
+                private alertService: AlertService
+                ) {}
 
     ngOnInit() {
         this.allUser();
     }
 
+    /**
+     * Carrega todos dados de Entity
+     * @returns Objto Json
+     */
     allUser() {
         this.dataService.getAlluser()
             .pipe().subscribe(data => {
@@ -34,10 +38,11 @@ export class UserListComponent implements OnInit {
             });
     }
 
+    /**
+     * Deleta Entity
+     * @param obj{id}
+    */
     delete(id) {
-        //alert('Live Demo Button Not Working');
-        //if (confirm('Are you sure?')) {
-        //}
         this.dataService.userDelete(id)
             .pipe().subscribe(data => {
                 this.allUser();
