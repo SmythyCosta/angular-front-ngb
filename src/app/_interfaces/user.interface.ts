@@ -6,4 +6,8 @@ export interface UserInterface {
     address: string;
     type: number;
     status: number;
+
+    // test
+    password: any;
+    image: any;
 }

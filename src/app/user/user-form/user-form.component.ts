@@ -13,6 +13,7 @@ export class UserFormComponent implements OnInit {
 
     public titlePage: String = "Sub Category";
     public titleBarNavegation: String = "Add";
+    userType = [{id:1,name:'Admin'},{id:2,name:'user'}];
 
     user = {
         id: '',

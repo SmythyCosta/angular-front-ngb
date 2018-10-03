@@ -90,7 +90,7 @@
                             <div class="col-7">
                                 <select class="form-control" id="type" name="type" formControlName="type" [(ngModel)]="user.type">
                                     <option value="" selected disabled>Please Select</option>
-                                    <option *ngFor="let item of userType" value="{{item.id}}">{{item.name}}</option>
+                                    <option *ngFor="let ut of userType" value="{{ut.id}}">{{ut.name}}</option>
                                 </select>
                             </div>
                         </div>
