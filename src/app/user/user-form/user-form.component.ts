@@ -11,11 +11,11 @@ import { AlertService, UserService, AppService } from '../../_services/index';
 })
 export class UserFormComponent implements OnInit {
 
-    public titlePage: String = "Sub Category";
-    public titleBarNavegation: String;
+    public titlePage: String = "User";
+    public titleBarNavegation: String = "New";
+    showPhoto: number = 0;
+    showPassword: number = 1;
     userType = [{ id: 1, name: 'Admin' }, { id: 2, name: 'user' }];
-    showPhoto: number;
-    showPassword: number;
 
     user = {};
     getUser = {
@@ -146,8 +146,6 @@ export class UserFormComponent implements OnInit {
             if (id) {
                 this.varsEdit();
                 this.edit(id);
-            }else{
-                this.varsNew();
             }
         });
     }
@@ -217,6 +215,7 @@ export class UserFormComponent implements OnInit {
         this.titleBarNavegation = "New";
         this.showPassword = 1;
         this.showPhoto = 0;
+        this.DisplayedText = "";
     }
 
     /**
