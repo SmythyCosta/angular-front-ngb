@@ -69,7 +69,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" *ngIf="showPassword">
                             <label for="password" class="col-5 col-form-label">Password</label>
                             <div class="col-7">
                                 <input class="form-control" type="password" id="password" name="password" formControlName="password" [(ngModel)]="user.password">
@@ -108,7 +108,7 @@
                         <div class="form-group row">
                             <label class="col-md-5 form-control-label">image</label>
                             <div class="col-md-7">
-                                <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="user.id" [src]="'data:image/jpg;base64,'+user.image"
+                                <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="showPhoto" [src]="'data:image/jpg;base64,'+user.image"
                                 />
                                 <div class="input-group">
                                     <span class="input-group-btn">

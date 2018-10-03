@@ -12,8 +12,10 @@ import { AlertService, UserService, AppService } from '../../_services/index';
 export class UserFormComponent implements OnInit {
 
     public titlePage: String = "Sub Category";
-    public titleBarNavegation: String = "Add";
+    public titleBarNavegation: String;
     userType = [{ id: 1, name: 'Admin' }, { id: 2, name: 'user' }];
+    showPhoto: number;
+    showPassword: number;
 
     user = {};
     getUser = {
@@ -89,6 +91,7 @@ export class UserFormComponent implements OnInit {
                         this.alertService.success('User Create successful', true);
                     } else if (data['status'] == 300) {
                         this.alertService.success('User already exists', true);
+                        this.varsNew();
                     }
                 }, error => {
                     this.alertService.error(error);
@@ -127,7 +130,8 @@ export class UserFormComponent implements OnInit {
                     status: this.getUser.status,
                     image: this.getUser.image
                 };
-            });
+                this.varsEdit(this.getUser.image);
+            });   
     }
 
     /**
@@ -140,8 +144,10 @@ export class UserFormComponent implements OnInit {
         this.routeParams.params.forEach((params: Params) => {
             let id: number = +params['id'];
             if (id) {
-                this.titleBarNavegation = "Edit";
+                this.varsEdit();
                 this.edit(id);
+            }else{
+                this.varsNew();
             }
         });
     }
@@ -158,7 +164,7 @@ export class UserFormComponent implements OnInit {
             email: new FormControl("", Validators.compose([Validators.required])),
             phone: new FormControl("", Validators.compose([Validators.required])),
             address: new FormControl("", Validators.compose([Validators.required])),
-            password: new FormControl("", Validators.compose([Validators.required])),
+            password: new FormControl(""),
             type: new FormControl("", Validators.compose([Validators.required])),
             status: new FormControl("", Validators.compose([Validators.required])),
         });
@@ -200,6 +206,30 @@ export class UserFormComponent implements OnInit {
                 this.DisplayedText = file.name;
             }
             this.onSelection.emit(this.fileList);
+        }
+    }
+
+    /**
+     * 
+     * Variaveis para o momento de Cadastro
+    */
+    varsNew(): any {
+        this.titleBarNavegation = "New";
+        this.showPassword = 1;
+        this.showPhoto = 0;
+    }
+
+    /**
+     * 
+     * @param image 
+     * Variaveis para o momento de Edicao
+    */
+    varsEdit(image = null): any {
+        this.titleBarNavegation = "Edit";
+        this.showPassword = 0;
+        // verica se existe foto
+        if(image){
+            this.showPhoto = 1;
         }
     }
 
