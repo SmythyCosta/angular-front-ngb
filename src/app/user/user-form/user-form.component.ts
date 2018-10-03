@@ -5,41 +5,14 @@ import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AlertService, UserService, AppService } from '../../_services/index';
 
-class User {
-    id: number;
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    type: number;
-    status: number;
-}
-
 @Component({
     selector: 'app-user-form',
     templateUrl: './user-form.component.html',
 })
 export class UserFormComponent implements OnInit {
-    @Input() allowMultiple: boolean;
-    @Input() fileType: string;
-    @Input() required: boolean;
-    @Input() maxSizeInKb: number;
-    @Output() onSelection = new EventEmitter<FileList>(); DisplayedText: string = "";
-    
-    fileList: any;
-    userAddForm: FormGroup;
 
-    getUser = {
-        id: '',
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-        password: '',
-        type: '',
-        status: '',
-        image: ''
-    };
+    public titlePage: String = "Sub Category";
+    public titleBarNavegation: String = "Add";
 
     user = {
         id: '',
@@ -52,9 +25,28 @@ export class UserFormComponent implements OnInit {
         status: '',
         image: ''
     };
+    getUser = {
+        id: '',
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        password: '',
+        type: '',
+        status: '',
+        image: ''
+    };
 
-    constructor(
-        public router: Router,
+    @Input() allowMultiple: boolean;
+    @Input() fileType: string;
+    @Input() required: boolean;
+    @Input() maxSizeInKb: number;
+    @Output() onSelection = new EventEmitter<FileList>(); DisplayedText: string = "";
+
+    fileList: any;
+    userAddForm: FormGroup;
+
+    constructor(public router: Router,
         private routeParams: ActivatedRoute,
         private dataService: UserService,
         private alertService: AlertService,
@@ -63,42 +55,24 @@ export class UserFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
-        /**
-         * Check id
-         * Verifica qual o valor do id na URL
-         */
-        this.routeParams.params.forEach((params: Params) => {
-            let id: number = +params['id'];
-            if (id) {
-                this.edit(id);
-            }
-        });
-        
-        /**
-         * FormGroup = productAddForm
-         * https://angular.io/guide/reactive-forms
-         * 7 - inputs
-         * 1 - upload de arquivo
-         */
-        this.userAddForm = new FormGroup({
-            name: new FormControl("", Validators.compose([Validators.required])),
-            email: new FormControl("", Validators.compose([Validators.required])),
-            phone: new FormControl("", Validators.compose([Validators.required])),
-            address: new FormControl(""),
-            password: new FormControl(""),
-            type: new FormControl(""),
-            status: new FormControl(""),
-        });
-
+        this.checkIssetID();
+        this.formGroupValidation();
     }
 
+    /**
+     * @param val 
+     * Salva os Inputs do formulario
+    */
     save(val) {
+        //
         this.insertAction(val);
     }
 
+    /**
+     * @param val 
+     * Trata a inserção dos arquivos.
+    */
     insertAction(val) {
-
         let formData: FormData = new FormData();
         if (this.fileList != undefined) {
             let file: File = this.fileList[0];
@@ -138,21 +112,60 @@ export class UserFormComponent implements OnInit {
         }
     }
 
-    edit(id){
+    /**
+     * @param id 
+     * Edição de Entity
+    */
+    edit(id) {
         this.dataService.getUser(id)
-            .pipe().subscribe(data => { this.getUser = data['user']; 
-                  this.user = {
-                        id:this.getUser.id,
-                        name:this.getUser.name,
-                        email:this.getUser.email,
-                        phone:this.getUser.phone,
-                        address:this.getUser.address,
-                        password:'',
-                        type:this.getUser.type,
-                        status:this.getUser.status,
-                        image:this.getUser.image
-                  };
+            .pipe().subscribe(data => {
+            this.getUser = data['user'];
+                this.user = {
+                    id: this.getUser.id,
+                    name: this.getUser.name,
+                    email: this.getUser.email,
+                    phone: this.getUser.phone,
+                    address: this.getUser.address,
+                    password: '',
+                    type: this.getUser.type,
+                    status: this.getUser.status,
+                    image: this.getUser.image
+                };
             });
-      }
+    }
+
+    /**
+     * Verifica se existe ID
+     * na rota.
+     * sim => edit
+     * nao => new
+    */
+    checkIssetID() {
+        this.routeParams.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+            if (id) {
+                this.titleBarNavegation = "Edit";
+                this.edit(id);
+            }
+        });
+    }
+
+    /**
+     * FormGroup = productAddForm
+     * https://angular.io/guide/reactive-forms
+     * 7 - inputs
+     * 1 - upload de arquivo
+     */
+    formGroupValidation(): any {
+        this.userAddForm = new FormGroup({
+            name: new FormControl("", Validators.compose([Validators.required])),
+            email: new FormControl("", Validators.compose([Validators.required])),
+            phone: new FormControl("", Validators.compose([Validators.required])),
+            address: new FormControl(""),
+            password: new FormControl(""),
+            type: new FormControl(""),
+            status: new FormControl(""),
+        });
+    }
 
 }
