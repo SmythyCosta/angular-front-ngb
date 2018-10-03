@@ -162,10 +162,10 @@ export class UserFormComponent implements OnInit {
             name: new FormControl("", Validators.compose([Validators.required])),
             email: new FormControl("", Validators.compose([Validators.required])),
             phone: new FormControl("", Validators.compose([Validators.required])),
-            address: new FormControl(""),
-            password: new FormControl(""),
-            type: new FormControl(""),
-            status: new FormControl(""),
+            address: new FormControl("", Validators.compose([Validators.required])),
+            password: new FormControl("", Validators.compose([Validators.required])),
+            type: new FormControl("", Validators.compose([Validators.required])),
+            status: new FormControl("", Validators.compose([Validators.required])),
         });
     }
 
