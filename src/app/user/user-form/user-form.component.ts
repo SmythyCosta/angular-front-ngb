@@ -13,7 +13,7 @@ export class UserFormComponent implements OnInit {
 
     public titlePage: String = "Sub Category";
     public titleBarNavegation: String = "Add";
-    userType = [{id:1,name:'Admin'},{id:2,name:'user'}];
+    userType = [{ id: 1, name: 'Admin' }, { id: 2, name: 'user' }];
 
     user = {};
     getUser = {
@@ -66,7 +66,7 @@ export class UserFormComponent implements OnInit {
     insertAction(val) {
 
         let formData: FormData = new FormData();
-        
+
         // verifica se existe upload
         if (this.fileList != undefined) {
             let file: File = this.fileList[0];
@@ -115,7 +115,7 @@ export class UserFormComponent implements OnInit {
     edit(id) {
         this.dataService.getUser(id)
             .pipe().subscribe(data => {
-            this.getUser = data['user'];
+                this.getUser = data['user'];
                 this.user = {
                     id: this.getUser.id,
                     name: this.getUser.name,
@@ -162,6 +162,45 @@ export class UserFormComponent implements OnInit {
             type: new FormControl("", Validators.compose([Validators.required])),
             status: new FormControl("", Validators.compose([Validators.required])),
         });
+    }
+
+    /**
+     * 
+     * @param event 
+     * Faz o upload da img
+    */
+    fileChange(event: any) {
+        this.fileList = event.target.files;
+        // let filetypeToCompare = this.fileType.replace('*','');
+        let hasFile = this.fileList && this.fileList.length > 0;
+        if (hasFile) {
+            var extension = this.fileList[0].name.substring(this.fileList[0].name.lastIndexOf('.'));
+            // Only process image files.
+            var validFileType = ".jpg , .png , .bmp";
+            if (validFileType.toLowerCase().indexOf(extension) < 0) {
+                alert("please select valid file type. The supported file types are .jpg , .png , .bmp");
+                this.fileList = null;
+                this.DisplayedText = "";
+                return false;
+            }
+
+            if (this.fileList[0].size > 165535) {
+                alert(`File size is more than 165 Kb`);
+                this.fileList = null;
+                this.DisplayedText = "";
+                return false;
+            }
+
+            let multipleFile = this.fileList.length > 1;
+            if (multipleFile) {
+                this.DisplayedText = this.fileList.length + ' file(s) has been selected';
+            }
+            else {
+                let file: File = this.fileList[0];
+                this.DisplayedText = file.name;
+            }
+            this.onSelection.emit(this.fileList);
+        }
     }
 
 }
