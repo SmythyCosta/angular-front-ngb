@@ -108,7 +108,7 @@
                         <div class="form-group row">
                             <label class="col-md-5 form-control-label">image</label>
                             <div class="col-md-7">
-                                <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="user.image !=''" [src]="'data:image/jpg;base64,'+user.image"
+                                <img style="height: 100px;width: 100px;" class="img-thumbnail" *ngIf="user.id" [src]="'data:image/jpg;base64,'+user.image"
                                 />
                                 <div class="input-group">
                                     <span class="input-group-btn">

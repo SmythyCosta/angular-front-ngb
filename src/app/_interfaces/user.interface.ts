@@ -8,6 +8,6 @@ export interface UserInterface {
     status: number;
 
     // test
-    password: any;
-    image: any;
+    //password: any;
+    //image: any;
 }
