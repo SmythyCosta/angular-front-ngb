@@ -16,7 +16,6 @@ export class CategoryFormComponent implements OnInit {
     public titleBarNavegation:String = "Add";
 
     cat = {};
-    
     getCat = {
         id:'',
         name: '',
@@ -24,23 +23,20 @@ export class CategoryFormComponent implements OnInit {
         status: ''
     };
     
-    constructor(
-        public  router: Router,
-        private routeParams: ActivatedRoute,
-        private http:Http,
-        private dataService:CategoryService
-    ) { }
+    constructor(public  router: Router,
+                private routeParams: ActivatedRoute,
+                private http:Http,
+                private dataService:CategoryService
+                ) {}
 
     ngOnInit() {
-        this.routeParams.params.forEach((params: Params) => {
-            let id: number = +params['id'];
-            if (id) {
-                this.titleBarNavegation = "Edit";
-                this.edit(id);
-            }
-        });
+        this.checkIssetID();
     }
 
+    /**
+     * Salva ou atualiza dados
+     * @param val 
+     */
     save(val){
         if(val.id==undefined){
 		    this.dataService.save(this.cat)
@@ -61,6 +57,12 @@ export class CategoryFormComponent implements OnInit {
         }
     }
     
+    /**
+     * buscar os dados que deveram 
+     * ser editados
+     * @param id 
+     * @returns Object this.cat
+     */
     edit(id){
         this.dataService.getCategory(id)
             .subscribe(data => { this.getCat = data.cat; 
@@ -72,6 +74,21 @@ export class CategoryFormComponent implements OnInit {
                 };
             });
     }
-    
 
+    /**
+     * Verifica se existe ID
+     * na rota.
+     * sim => edit
+     * nao => new
+     */
+    checkIssetID(){
+        this.routeParams.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+            if (id) {
+                this.titleBarNavegation = "Edit";
+                this.edit(id);
+            }
+        });
+    }
+    
 }

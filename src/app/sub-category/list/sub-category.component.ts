@@ -64,8 +64,8 @@ export class SubCategoryComponent implements OnInit {
     }
 
     /**
-     * @param obj 
      * Delete Entity
+     * @param obj 
     */
     delete(id) {
         this.dataService.subCategoryDelete(id)

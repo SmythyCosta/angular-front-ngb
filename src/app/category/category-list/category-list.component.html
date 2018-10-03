@@ -59,7 +59,7 @@
                                     <span *ngIf="obj.status==0" class="badge badge-danger">Inactive</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id)"> Delete </button> 
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="delete(obj.id, obj.name)"> Delete </button> 
 
                                     <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/category/form', obj.id]"> Edit </button>
                                 </td>

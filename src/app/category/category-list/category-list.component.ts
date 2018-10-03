@@ -16,20 +16,18 @@ export class CategoryListComponent implements OnInit {
     public titlePage:String = "Category";
     public countJson:number;
 
-    constructor(
-        public router: Router,
-        private http: Http,
-        private dataService: CategoryService
-    ) { }
-
+    constructor(public router: Router,
+                private http: Http,
+                private dataService: CategoryService
+                ) {}
 
     ngOnInit() {
         this.allCategory();
     }
 
     /**
-     * @returns
-     * All Entity
+     * Carrega todos dados de Entity
+     * @returns Objto Json
      */
     allCategory() {
         this.dataService.getAllCategory()
@@ -40,12 +38,12 @@ export class CategoryListComponent implements OnInit {
     }
 
     /**
-     * @param obj 
-     * Delete Entity
+     * Deleta Entity
+     * @param obj{id, name}
      */
-    delete(id) {
+    delete(id, name) {
 
-        let result = confirm("Want to delete?");
+        let result = confirm("Want to delete "+name+" ?");
 
         if (result) {
             //Logic to delete the items
@@ -75,5 +73,4 @@ export class CategoryListComponent implements OnInit {
         return Object.keys(obj).length;
     }
     
-
 }
