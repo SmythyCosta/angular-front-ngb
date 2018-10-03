@@ -14,6 +14,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class SubCategoryComponent implements OnInit {
 
+    public subCategoryList: subCategoryInterface[];
+    public countJson: number;
+
     /** variaveis relativa ao Modal */
     public modalRef: BsModalRef; //Modal
     public info: String;         //Modal
@@ -23,25 +26,17 @@ export class SubCategoryComponent implements OnInit {
     dtOptions: DataTables.Settings = {}; //  DataTable
     dtTrigger = new Subject();           //  DataTable
 
-    public subCategoryList: subCategoryInterface[];
-    public countJson: number;
-
-
-    constructor(
-        public router: Router,
-        private http: Http,
-        private dataService: SubCategoryService,
-        private alertService: AlertService,
-        private modalService: BsModalService
-    ) { }
-
+    constructor(public router: Router,
+                private http: Http,
+                private dataService: SubCategoryService,
+                private alertService: AlertService,
+                private modalService: BsModalService
+                ){}
 
     ngOnInit() {
-
         this.dtOptions = {
             pagingType: 'full_numbers'
         };
-
         this.allSubCategory();
     }
 
