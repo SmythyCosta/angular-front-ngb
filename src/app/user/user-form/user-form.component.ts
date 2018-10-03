@@ -15,17 +15,7 @@ export class UserFormComponent implements OnInit {
     public titleBarNavegation: String = "Add";
     userType = [{id:1,name:'Admin'},{id:2,name:'user'}];
 
-    user = {
-        id: '',
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-        password: '',
-        type: '',
-        status: '',
-        image: ''
-    };
+    user = {};
     getUser = {
         id: '',
         name: '',
@@ -74,23 +64,28 @@ export class UserFormComponent implements OnInit {
      * Trata a inserção dos arquivos.
     */
     insertAction(val) {
+
         let formData: FormData = new FormData();
+        
+        // verifica se existe upload
         if (this.fileList != undefined) {
             let file: File = this.fileList[0];
             formData.append('file', file, file.name);
         }
-        formData.append('name', this.user.name);
-        formData.append('email', this.user.email);
-        formData.append('phone', this.user.phone);
-        formData.append('address', this.user.address);
-        formData.append('password', this.user.password);
-        formData.append('type', this.user.type);
-        formData.append('status', this.user.status);
+
+        formData.append('name', this.userAddForm.value.name);
+        formData.append('email', this.userAddForm.value.email);
+        formData.append('phone', this.userAddForm.value.phone);
+        formData.append('address', this.userAddForm.value.address);
+        formData.append('password', this.userAddForm.value.password);
+        formData.append('type', this.userAddForm.value.type);
+        formData.append('status', this.userAddForm.value.status);
 
         if (val.id == undefined || val.id == '') {
             this.dataService.save(formData)
                 .pipe().subscribe(data => {
                     if (data['status'] == 200) {
+                        this.user = {};
                         this.alertService.success('User Create successful', true);
                     } else if (data['status'] == 300) {
                         this.alertService.success('User already exists', true);
