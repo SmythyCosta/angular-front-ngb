@@ -6,8 +6,6 @@ import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Rx';
 import { AlertService } from '../../_services';
 
-
-
 @Component({
     selector: 'app-product-form',
     templateUrl: './product-form.component.html',
@@ -15,22 +13,10 @@ import { AlertService } from '../../_services';
 })
 export class ProductFormComponent implements OnInit {
 
-    @Input() allowMultiple: boolean;
-    @Input() fileType: string;
-    @Input() required: boolean;
-    @Input() maxSizeInKb: number;
-    @Output() onSelection = new EventEmitter<FileList>();
+    public titlePage: String = "Product";
+    public titleBarNavegation: String = "Add";
 
-    DisplayedText: string = "";
-
-    cat = {};
-    subCat: any[] = [];
     product = {};
-
-    fileList: any;
-
-    productAddForm: FormGroup;
-
     getProduct = {
         id: '',
         serial_number: '',
@@ -44,58 +30,43 @@ export class ProductFormComponent implements OnInit {
         image: ''
     };
 
-    constructor(
-        public router: Router,
-        private routeParams: ActivatedRoute,
-        private http: Http,
-        private dataService: ProductService,
-        private alertService: AlertService
-    ) { }
+    allCategory: Object[] = [];
+    filterSubCategory: Object[] = [];
+
+    @Input() allowMultiple: boolean;
+    @Input() fileType: string;
+    @Input() required: boolean;
+    @Input() maxSizeInKb: number;
+    @Output() onSelection = new EventEmitter<FileList>();
+    DisplayedText: string = "";
+
+    fileList: any;
+    productAddForm: FormGroup;
+
+    constructor(public router: Router,
+                private routeParams: ActivatedRoute,
+                private http: Http,
+                private dataService: ProductService,
+                private alertService: AlertService
+                ) {}
 
     ngOnInit() {
+        this.checkIssetID();
+        this.formGroupValidation();
+        this.callSelectCategory(); 
+    }
 
-        /**
-         * Check id
-         * Verifica qual o valor do id na URL
-         */
-        this.routeParams.params.forEach((params: Params) => {
-            let id: number = +params['id'];
-            if (id) {
-                this.edit(id);
-            }
-        });
-
-        /**
-         * FormGroup = productAddForm
-         * https://angular.io/guide/reactive-forms
-         * 8 - inputs
-         * 1 - upload de arquivo
-         */
-        this.productAddForm = new FormGroup({
-            //Validators
-            //https://angular.io/guide/form-validation
-            serial_number: new FormControl(""),
-            name: new FormControl("", Validators.compose([Validators.required])),
-            category: new FormControl("", Validators.compose([Validators.required])),
-            subCategory: new FormControl(""),
-            purchase_price: new FormControl("", Validators.compose([Validators.required])),
-            selling_price: new FormControl("", Validators.compose([Validators.required])),
-            note: new FormControl(""),
-            status: new FormControl(""),
-        });
-
-        /**
-         * Retorn o Json de categorias 
-         * do Serviço Product
-         * 
-         * Vai popular o select
-         * <select formControlName="category">
-         */
+    /**
+     * Retorn o Json de categorias.
+     * Vai popular o select
+     * <select formControlName="category">
+     * @returns categorias
+    */
+    callSelectCategory(){
         this.dataService.getCategory()
             .subscribe(data => {
-                this.cat = data.cat;
+                this.allCategory = data.cat;
             });
-
     }
 
     /**
@@ -107,11 +78,11 @@ export class ProductFormComponent implements OnInit {
      * buscar a subCategoria
      * para popular o select
      * <select formControlName="subCategory">
-     */
-    selectCat(id) {
+    */
+    callSelectSubCategory(id) {
         this.dataService.getSubCategory(id)
             .subscribe(data => {
-                this.subCat = data.subCat;
+                this.filterSubCategory = data.subCat;
             });
     }
 
@@ -119,7 +90,7 @@ export class ProductFormComponent implements OnInit {
      * @param val 
      * val => productAddForm
      * Salva os Inputs do formulario
-     */
+    */
     save(val) {
         //função para tratar a inserção dos arquivos
         this.insertAction(val);
@@ -171,15 +142,15 @@ export class ProductFormComponent implements OnInit {
     /**
      * @param id 
      * Edição de Produto
-     */
+    */
     edit(id) {
         this.DisplayedText = '';
         this.dataService.getProduct(id)
             .subscribe(data => {
-                
+
                 this.getProduct = data.product;
                 let sub_category_id;
-                
+
                 if (this.getProduct.sub_category_id == null) {
                     sub_category_id = '';
                 } else {
@@ -245,6 +216,43 @@ export class ProductFormComponent implements OnInit {
             this.onSelection.emit(this.fileList);
 
         }
+    }
+
+    /**
+     * Verifica se existe ID
+     * na rota.
+     * sim => edit
+     * nao => new
+    */
+    checkIssetID() {
+        this.routeParams.params.forEach((params: Params) => {
+            let id: number = +params['id'];
+            if (id) {
+                this.titleBarNavegation = "Edit";
+                this.edit(id);
+            }
+        });
+    }
+
+    /**
+     * FormGroup = productAddForm
+     * https://angular.io/guide/reactive-forms
+     * 8 - inputs
+     * 1 - upload de arquivo
+    */
+    formGroupValidation(){   
+        this.productAddForm = new FormGroup({
+            //Validators
+            //https://angular.io/guide/form-validation
+            serial_number: new FormControl(""),
+            name: new FormControl("", Validators.compose([Validators.required])),
+            category: new FormControl("", Validators.compose([Validators.required])),
+            subCategory: new FormControl(""),
+            purchase_price: new FormControl("", Validators.compose([Validators.required])),
+            selling_price: new FormControl("", Validators.compose([Validators.required])),
+            note: new FormControl(""),
+            status: new FormControl(""),
+        });
     }
 
 }

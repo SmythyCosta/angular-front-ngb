@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2 style="text-align: center"> Product </h2>
+                <h2 style="text-align: center"> {{titlePage}} </h2>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
                         <li class="breadcrumb-item">
                             Product
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Add</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{titleBarNavegation}}</li>
                     </ol>
                 </nav>
             </div>
@@ -56,9 +56,9 @@
 
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select id="category" class="form-control" formControlName="category" required [(ngModel)]="product.category" (ngModelChange)="selectCat($event)">
+                        <select id="category" class="form-control" formControlName="category" required [(ngModel)]="product.category" (ngModelChange)="callSelectSubCategory($event)">
                             <option value="" selected disabled>Please Select</option>
-                            <option *ngFor="let item of cat" value="{{item.id}}">{{item.name}}</option>
+                            <option *ngFor="let cat of allCategory" value="{{cat.id}}">{{cat.name}}</option>
                         </select>
                     </div>
 
@@ -69,7 +69,7 @@
                         <label for="subCategory">Sub Category</label>
                         <select id="subCategory" class="form-control" formControlName="subCategory" required [(ngModel)]="product.subCategory">
                             <option value="" selected>Please Select</option>
-                            <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
+                            <option *ngFor="let subCat of filterSubCategory" value="{{subCat.id}}">{{subCat.name}}</option>
                         </select>
                     </div>
 
