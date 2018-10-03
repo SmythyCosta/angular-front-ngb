@@ -13,6 +13,8 @@ import { CategoryService }  from '../../_services/category.service';
 export class ProductListComponent implements OnInit {
 
     public productList: ProductInterface[];
+    public countJson: number;
+
     categoryList = {};
 
     
@@ -73,5 +75,16 @@ export class ProductListComponent implements OnInit {
             });
     }
      */
+
+    /**
+     * @param obj 
+     * *********** tutorial ***********
+     * length (data);           // returns pai
+     * length (data.name_data)  // returns filho
+    */
+    lengthJson(obj) {
+        //count elements
+        return Object.keys(obj).length;
+    }
 
 }
