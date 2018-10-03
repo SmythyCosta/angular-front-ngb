@@ -15,17 +15,11 @@ export class ProductListComponent implements OnInit {
     public productList: ProductInterface[];
     public countJson: number;
 
-    categoryList = {};
-
-    
-
     constructor(
         public router: Router,
         private http: Http,
         private dataService: ProductService
     ) { }
-
-    
 
     ngOnInit() {
         this.allProduct();
