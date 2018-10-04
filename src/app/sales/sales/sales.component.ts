@@ -15,6 +15,8 @@ export class SalesComponent implements OnInit {
     subCat:any[] = [];
     productList:any[] = []; 
 
+    salesAddForm = null;
+
     constructor(public router: Router,
         private http: Http,
         private alertService: AlertService,
@@ -48,7 +50,24 @@ export class SalesComponent implements OnInit {
 				// {amount: 111.11, date: "Jan 1, 2016", final: false},
 				// {amount: 222.22, date: "Jan 2, 2016", final: true}
 				]
-		}
+        }
+        
+        this.salesAddForm = new FormGroup({
+			invoiceCode: new FormControl(''),
+			customer: new FormControl('',Validators.compose([Validators.required])),
+			date: new FormControl(''),
+			allCategory: new FormControl('',Validators.compose([Validators.required])),
+			subCategory: new FormControl(''),
+			allProduct: new FormControl('',Validators.compose([Validators.required])),
+			subTotal: new FormControl(''),
+			discount: new FormControl(''),
+			vat: new FormControl(''),
+			grandTotal: new FormControl(''),
+			receivedAmount: new FormControl('',Validators.compose([Validators.required])),
+			due: new FormControl(''),
+			paymentType: new FormControl(''),
+			products: new FormArray([])
+		});
     }
 
     /**
