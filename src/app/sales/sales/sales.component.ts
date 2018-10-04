@@ -13,7 +13,7 @@ export class SalesComponent implements OnInit {
     sales:any;
     categoryList: any[] = [];
     subCat:any[] = [];
-    productList:any[] = [];
+    productList:any[] = []; 
 
     constructor(public router: Router,
         private http: Http,
@@ -98,6 +98,26 @@ export class SalesComponent implements OnInit {
     selectsubCategory(event){
 		if(event > 0){
 			this.categoryByProduct(2,event);
+		}
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    selectProduct(event){
+		if(event > 0){
+			this.dataService.getProductInfo(event)
+				.subscribe(data => { 
+					let item = data.product;
+					var product = {id:item.id,serial_number: item.serial_number, name: item.name, quantity: 1,selling_price:item.selling_price,total:null};
+					// add pay off to both the model and to form controls because I don't think Angular has any way to do this automagically yet
+					this.sales.products.push(product);
+					const control = <FormArray>this.salesAddForm.controls['products'];
+					control.push(this.createFormGroupArray(product));
+            	});
+            	this.itemChange();
+            	
 		}
 	}
 
