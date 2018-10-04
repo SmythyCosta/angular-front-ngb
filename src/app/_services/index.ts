@@ -7,3 +7,5 @@ export * from './product.service';
 export * from './setting.service';
 export * from './sub-category.service';
 export * from './user.service';
+export * from './sales.service';
+
