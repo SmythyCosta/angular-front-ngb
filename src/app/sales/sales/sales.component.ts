@@ -11,7 +11,9 @@ import * as moment from 'moment';
 export class SalesComponent implements OnInit {
 
     sales:any;
-    categoryList: Object[] = [];
+    
+    categoryList: any[] = [];
+    subCat:any[] = [];
 
     constructor(public router: Router,
         private http: Http,
@@ -75,5 +77,18 @@ export class SalesComponent implements OnInit {
 			this.categoryByProduct(1,id); //
 		}
     }
+
+    /**
+     * 
+     * @param key 
+     * @param val 
+     */
+    categoryByProduct(key,val){
+		this.dataService.getCategoryByProduct(key,val)
+			.subscribe(data => { 
+    				this.productList = data.product;
+    				this.sales.allProduct='';
+                });
+	}
 
 }
