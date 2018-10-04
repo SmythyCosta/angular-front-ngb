@@ -49,12 +49,31 @@ export class SalesComponent implements OnInit {
 		}
     }
 
-
+    /**
+     * 
+     */
     category() {
         this.dataService.getAllCategory()
             .subscribe(data => {
                 this.categoryList = data.cat;
             });
+    }
+
+    /**
+     * 
+     * @param id 
+     */
+    selectCat(id){
+		if(id > 0){
+			this.dataService.getSubCategory(id)
+                .subscribe(data => { 
+                  this.subCat = data.subCat;
+                  if(this.subCat.length==0){
+                  	this.sales.subCategory = '';
+                  }
+            });
+			this.categoryByProduct(1,id); //
+		}
     }
 
 }
