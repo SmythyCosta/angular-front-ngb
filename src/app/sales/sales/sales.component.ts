@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
+import { FormGroup, FormBuilder,FormArray, Validators, FormControl,NgModel,FormsModule  } from '@angular/forms';
 import { AlertService, AppService, SalesService } from '../../_services/index';
 import * as moment from 'moment';
 
