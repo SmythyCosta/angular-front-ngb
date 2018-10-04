@@ -11,9 +11,9 @@ import * as moment from 'moment';
 export class SalesComponent implements OnInit {
 
     sales:any;
-    
     categoryList: any[] = [];
     subCat:any[] = [];
+    productList:any[] = [];
 
     constructor(public router: Router,
         private http: Http,
@@ -89,6 +89,16 @@ export class SalesComponent implements OnInit {
     				this.productList = data.product;
     				this.sales.allProduct='';
                 });
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    selectsubCategory(event){
+		if(event > 0){
+			this.categoryByProduct(2,event);
+		}
 	}
 
 }
