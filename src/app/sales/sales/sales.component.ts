@@ -139,6 +139,38 @@ export class SalesComponent implements OnInit {
             	this.itemChange();
             	
 		}
+    }
+    
+    /**
+     * 
+     */
+    itemChange(){
+		let totalAmount=0;
+		for (let key in this.sales.products) {
+			this.sales.products[key].total = (this.sales.products[key].selling_price * this.sales.products[key].quantity);
+			// keys.push({key: key, value: this.sales.products[key]});
+			var num = Number(this.sales.products[key].total);
+			totalAmount += num;
+		}
+		setTimeout(() => {
+            this.sales.subTotal = totalAmount;
+        });
+        this.changeGrandTotal();
+    }
+    
+    /**
+     * 
+     */
+    changeGrandTotal(){
+		setTimeout(() => {
+			let subTotal = this.sales.subTotal;
+			let discount = this.sales.discount;
+			let vat = this.sales.vat;
+			subTotal = subTotal-(subTotal/100*discount);
+			let total = subTotal +(subTotal/100*vat);
+			this.sales.grandTotal = total.toFixed(2);
+			this.amountChange();
+		});
 	}
 
 }
