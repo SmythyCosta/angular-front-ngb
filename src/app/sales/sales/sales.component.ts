@@ -171,6 +171,16 @@ export class SalesComponent implements OnInit {
 			this.sales.grandTotal = total.toFixed(2);
 			this.amountChange();
 		});
+    }
+    
+    /**
+     * 
+     */
+    amountChange(){
+		setTimeout(() => {
+             let totalDue = this.sales.grandTotal - this.sales.receivedAmount;
+             this.sales.due =  totalDue.toFixed(2);
+        });
 	}
 
 }
