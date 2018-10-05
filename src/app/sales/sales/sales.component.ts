@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder,FormArray, Validators, FormControl,NgModel,Forms
 import { AlertService, AppService, SalesService } from '../../_services/index';
 import * as moment from 'moment';
 
+import {NgbDateStruct,NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
     selector: 'app-sales',
     templateUrl: './sales.component.html'
@@ -23,6 +25,7 @@ export class SalesComponent implements OnInit {
         private alertService: AlertService,
         private dataService: SalesService,
         private AppService: AppService,
+        private parserFormatter: NgbDateParserFormatter
     ) { }
 
     ngOnInit() {
