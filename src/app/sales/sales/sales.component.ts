@@ -181,6 +181,21 @@ export class SalesComponent implements OnInit {
              let totalDue = this.sales.grandTotal - this.sales.receivedAmount;
              this.sales.due =  totalDue.toFixed(2);
         });
+    }
+    
+    /**
+     * 
+     */
+    createSales(){
+		let date = this.parserFormatter.format(this.sales.date);
+		this.sales.date=date;
+		this.dataService.createSales(this.sales)
+            .subscribe(data =>{
+              this.alertService.success('Invoice Create successful', true);
+              this.router.navigate(['sales-invoice-details/' + data.sales_id]);
+            },error =>{
+              this.alertService.error(error);
+            });
 	}
 
 }
