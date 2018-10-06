@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SalesComponent } from './sales/sales.component';
 import { SalesRoutes } from './sales.routes';
 import { DirectivasModule } from '../_directives/directives.module';
+import { SalesService } from '../_services';
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import { DirectivasModule } from '../_directives/directives.module';
         //ProductListComponent, ProductFormComponent 
     ],
     providers: [
-        //ProductService
+        SalesService
     ]
 })
 export class SalesModule { }
