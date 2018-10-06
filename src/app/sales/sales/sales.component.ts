@@ -199,6 +199,20 @@ export class SalesComponent implements OnInit {
             },error =>{
               this.alertService.error(error);
             });
+    }
+    
+    /**
+     * 
+     * @param product 
+     */
+    createFormGroupArray(product) {
+		return new FormGroup({
+			serial_number: new FormControl(product.serial_number),
+			name: new FormControl(product.name),
+			quantity: new FormControl(product.quantity),
+			selling_price: new FormControl(product.selling_price),
+			total: new FormControl(product.total)
+		});
 	}
 
 }
