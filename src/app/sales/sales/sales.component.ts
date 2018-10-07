@@ -215,6 +215,19 @@ export class SalesComponent implements OnInit {
 			selling_price: new FormControl(product.selling_price),
 			total: new FormControl(product.total)
 		});
+    }
+    
+    /**
+     * 
+     * @param index 
+     */
+    deleteTableRow(index:number) {
+		// delete payoff from both the model and the FormArray
+		this.sales.products.splice(index, 1);
+		const control = <FormArray>this.salesAddForm.controls['products'];
+        control.removeAt(index);
+        this.itemChange();
+        this.changeGrandTotal()
 	}
 
 }
