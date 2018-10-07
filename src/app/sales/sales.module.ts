@@ -16,7 +16,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         FormsModule,
         ReactiveFormsModule,
         DirectivasModule,
-        NgbModule.forRoot(),
+        NgbModule,
         SalesRoutes
     ],
     declarations: [

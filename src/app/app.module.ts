@@ -30,7 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         HttpModule,
         AppBootstrapModule,
         DirectivasModule,
-        NgbModule,
+        NgbModule.forRoot(),
         AppRoutes
     ],
     declarations: [
