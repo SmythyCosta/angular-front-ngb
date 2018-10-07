@@ -71,7 +71,9 @@ export class SalesComponent implements OnInit {
 			due: new FormControl(''),
 			paymentType: new FormControl(''),
 			products: new FormArray([])
-		});
+        });
+        
+        this.category();
     }
 
     /**
@@ -92,10 +94,10 @@ export class SalesComponent implements OnInit {
 		if(id > 0){
 			this.dataService.getSubCategory(id)
                 .subscribe(data => { 
-                  this.subCat = data.subCat;
-                  if(this.subCat.length==0){
-                  	this.sales.subCategory = '';
-                  }
+                    this.subCat = data.subCat;
+                    if(this.subCat.length==0){
+                  	    this.sales.subCategory = '';
+                    }
             });
 			this.categoryByProduct(1,id); //
 		}

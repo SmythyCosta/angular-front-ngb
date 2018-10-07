@@ -27,11 +27,11 @@
                     <div class="col-md-3">
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <!-- <label class="form-control-label" for="allCategory">Select Category </label> -->
-                                <select class="form-control" id="allCategory" name="allCategory" formControlName="allCategory" [(ngModel)]="sales.allCategory"
+                                <label class="form-control-label" for="allCategory">Select Category </label>
+                                <select name="allCategory" id="allCategory" class="form-control" formControlName="allCategory" [(ngModel)]="sales.allCategory"
                                     (ngModelChange)="selectCat($event)">
                                     <option value="" selected disabled>Select a Category</option>
-                                    <option *ngFor="let item of categoryList" value="{{item.id}}">{{item.name}}</option>
+                                    <option *ngFor="let cat of categoryList" value="{{cat.id}}">{{cat.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                 <select class="form-control" id="subCategory" name="subCategory" formControlName="subCategory" [(ngModel)]="sales.subCategory"
                                     (ngModelChange)="selectsubCategory($event)">
                                     <option value="" selected>Please Select</option>
-                                    <option *ngFor="let item of subCat" value="{{item.id}}">{{item.name}}</option>
+                                    <option *ngFor="let sbC of subCat" value="{{sbC.id}}">{{sbC.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 <select class="form-control" id="allProduct" name="allProduct" formControlName="allProduct" [(ngModel)]="sales.allProduct"
                                     (ngModelChange)="selectProduct($event)">
                                     <option value="" selected disabled>Please Select</option>
-                                    <option *ngFor="let item of productList" value="{{item.id}}">{{item.name}} - ({{item.stock_quantity-item.damagedQuantity}})</option>
+                                    <option *ngFor="let p of productList" value="{{p.id}}">{{p.name}} - ({{p.stock_quantity-p.damagedQuantity}})</option>
                                 </select>
                             </div>
                         </div>
