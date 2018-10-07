@@ -18,6 +18,8 @@ export class SalesComponent implements OnInit {
     subCat:any[] = [];
     productList:any[] = []; 
 
+    allCustomer:any[] = [];
+
     salesAddForm = null;
 
     constructor(public router: Router,
@@ -74,6 +76,7 @@ export class SalesComponent implements OnInit {
         });
         
         this.category();
+        this.customer();
     }
 
     /**
@@ -228,6 +231,16 @@ export class SalesComponent implements OnInit {
         control.removeAt(index);
         this.itemChange();
         this.changeGrandTotal()
+    }
+    
+    /**
+     * 
+     */
+    customer(){
+		this.dataService.getAllCustomer()
+			.subscribe(data => { 
+    				this.allCustomer = data.customer;
+                });
 	}
 
 }
