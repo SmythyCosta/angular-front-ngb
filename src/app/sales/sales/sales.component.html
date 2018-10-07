@@ -21,8 +21,20 @@
         <div class="row">
             <div class="col-md-12">
 
+                <!-- formulario -->
                 <form method="post" enctype="multipart/form-data" class="form-horizontal" (ngSubmit)="createSales()" [formGroup]="salesAddForm">
-                    <!-- formulario -->
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <!-- <label class="form-control-label" for="allCategory">Select Category </label> -->
+                            <select class="form-control" id="allCategory" name="allCategory" formControlName="allCategory" [(ngModel)]="sales.allCategory"
+                                (ngModelChange)="selectCat($event)">
+                                <option value="" selected disabled>Select a Category</option>
+                                <option *ngFor="let item of categoryList" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>

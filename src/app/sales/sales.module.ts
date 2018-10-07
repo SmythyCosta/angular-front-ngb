@@ -8,12 +8,15 @@ import { SalesRoutes } from './sales.routes';
 import { DirectivasModule } from '../_directives/directives.module';
 import { SalesService } from '../_services';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         DirectivasModule,
+        NgbModule,
         SalesRoutes
     ],
     declarations: [

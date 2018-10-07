@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { AlertService, AuthenticationService, AppService ,SettingService} from './_services/index';
 import { customHttpProvider } from './_helpers/index';
 import { AuthGuard } from './_guards/index';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { AuthGuard } from './_guards/index';
         HttpModule,
         AppBootstrapModule,
         DirectivasModule,
+        NgbModule,
         AppRoutes
     ],
     declarations: [
