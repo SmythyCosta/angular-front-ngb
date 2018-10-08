@@ -158,6 +158,34 @@
                                     <input type="text" class="form-control form-control-sm" name="discount" formControlName="discount" [(ngModel)]="sales.discount" (ngModelChange)="changeGrandTotal()">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="grandTotal" class="col-5 col-form-label">Grand Total</label>
+                                <div class="col-7">
+                                    <input type="text" class="form-control form-control-sm" name="grandTotal" formControlName="grandTotal" [(ngModel)]="sales.grandTotal" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="receivedAmount" class="col-5 form-control-label">Received Amount <span>*</span></label>
+                                <div class="col-7">
+                                    <input class="form-control form-control-sm" type="number" id="receivedAmount" name="receivedAmount" formControlName="receivedAmount" name="receivedAmount" [(ngModel)]="sales.receivedAmount" (ngModelChange)="amountChange()">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="due" class="col-5 form-control-label">Due</label>
+                                <div class="col-7">
+                                    <input class="form-control form-control-sm" type="text" id="due" name="due" formControlName="due" [(ngModel)]="sales.due" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="paymentType" class="col-5 form-control-label">Payment Type <span>*</span></label>
+                                <div class="col-7">
+                                    <select class="form-control" type="text" id="paymentType" name="paymentType" formControlName="paymentType" [(ngModel)]="sales.paymentType">
+                                        <option value="0">Please Select</option>
+                                        <option *ngFor="let item of paymentTypeList" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" [disabled]="!salesAddForm.valid" class="btn btn-info btn-sm">New Sales</button>
                         </div><!-- End Payment -->
 
                     </div>
