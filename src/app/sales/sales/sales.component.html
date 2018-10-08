@@ -109,8 +109,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-6 px-3">
-                            <!-- Begin Customer -->
+                        <div class="col-md-6 px-3"><!-- Begin Customer -->
                             <legend class="scheduler-border">Customer</legend>
 
                             <div class="form-group row">
@@ -133,8 +132,19 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <!-- End Customer -->
+                            <div class="form-group row">
+                                <label for="date" class="col-5 col-form-label"> Date <span>*</span> </label>
+                                <div class="col-7">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="yyyy-mm-dd" name="date" id="date" formControlName="date" [(ngModel)]="sales.date" required ngbDatepicker #d="ngbDatepicker">
+                                        <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- End Customer -->
 
                     </div>
 
