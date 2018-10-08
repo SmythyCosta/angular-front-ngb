@@ -22,6 +22,8 @@ export class SalesComponent implements OnInit {
 
     salesAddForm = null;
 
+    paymentTypeList = [{id:1,name:'cash'},{id:2,name:'check'},{id:3,name:'card'}];
+
     constructor(public router: Router,
         private http: Http,
         private alertService: AlertService,
