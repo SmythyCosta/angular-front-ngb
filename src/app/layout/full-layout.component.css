@@ -40,9 +40,11 @@
 
 footer{
     background-color: #f78b1f; 
-    min-height: 100px; 
+    min-height: 100px;
+    min-width: 208vh; 
     color: #fff; 
     padding-top: 40px;
+    position: absolute;
 }
 
 @media (min-width: 900px) {

@@ -9,7 +9,8 @@ import {NgbDateStruct,NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-sales',
-    templateUrl: './sales.component.html'
+    templateUrl: './sales.component.html',
+    styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit {
 
@@ -17,12 +18,12 @@ export class SalesComponent implements OnInit {
     categoryList: any[] = [];
     subCat:any[] = [];
     productList:any[] = []; 
-
     allCustomer:any[] = [];
-
     salesAddForm = null;
 
     paymentTypeList = [{id:1,name:'cash'},{id:2,name:'check'},{id:3,name:'card'}];
+
+    customerDiscount:any;
 
     constructor(public router: Router,
         private http: Http,
@@ -55,6 +56,7 @@ export class SalesComponent implements OnInit {
 			due:"",
 			paymentType:"0",
 			products: [
+                // Ex: 
 				// {amount: 111.11, date: "Jan 1, 2016", final: false},
 				// {amount: 222.22, date: "Jan 2, 2016", final: true}
 				]
@@ -243,6 +245,20 @@ export class SalesComponent implements OnInit {
 			.subscribe(data => { 
     				this.allCustomer = data.customer;
                 });
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    selectCustomer(event){
+		if(event > 0){
+			this.dataService.getCustomerDiscount(event)
+			.subscribe(data => { 
+    				this.customerDiscount = data.customer;
+    				this.sales.discount = this.customerDiscount.discount_percentage;
+                });
+		}
 	}
 
 }
